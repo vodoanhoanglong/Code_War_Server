@@ -1,0 +1,55 @@
+actions:
+- name: changeAccountPassword
+  definition:
+    kind: synchronous
+    handler: '{{AUTH_BASE_URL}}/actions'
+  permissions:
+  - role: moderator
+  - role: user
+- name: createAccount
+  definition:
+    kind: synchronous
+    handler: '{{AUTH_BASE_URL}}/actions'
+  permissions:
+  - role: moderator
+  - role: anonymous
+- name: forgotPassword
+  definition:
+    kind: synchronous
+    handler: '{{AUTH_BASE_URL}}/actions'
+  permissions:
+  - role: anonymous
+- name: login
+  definition:
+    kind: synchronous
+    handler: '{{AUTH_BASE_URL}}/actions'
+  permissions:
+  - role: anonymous
+- name: refreshToken
+  definition:
+    kind: synchronous
+    handler: '{{AUTH_BASE_URL}}/actions'
+  permissions:
+  - role: anonymous
+  - role: user
+  - role: moderator
+custom_types:
+  enums: []
+  input_objects:
+  - name: ChangeUserPasswordInput
+  - name: CreateAccountInput
+  - name: ChangeAccountPasswordInput
+  - name: LoginInput
+  - name: ChangePasswordInput
+  - name: RefreshTokenInput
+  - name: Input
+  - name: RevokeTokenInput
+  objects:
+  - name: MessageOutput
+  - name: AffectedRowsOutput
+  - name: CreateAccountOutput
+  - name: AccessTokenOutput
+  - name: Results
+  - name: Output
+  - name: RevokeTokenOutput
+  scalars: []

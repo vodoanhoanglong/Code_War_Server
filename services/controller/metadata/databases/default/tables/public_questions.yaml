@@ -1,0 +1,15 @@
+table:
+  name: questions
+  schema: public
+object_relationships:
+- name: contest
+  using:
+    foreign_key_constraint_on: contestId
+array_relationships:
+- name: results
+  using:
+    foreign_key_constraint_on:
+      column: questionId
+      table:
+        name: results
+        schema: public

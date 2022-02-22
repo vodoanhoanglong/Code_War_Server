@@ -1,0 +1,18 @@
+table:
+  name: contests
+  schema: public
+array_relationships:
+- name: questions
+  using:
+    foreign_key_constraint_on:
+      column: contestId
+      table:
+        name: questions
+        schema: public
+- name: results
+  using:
+    foreign_key_constraint_on:
+      column: contestId
+      table:
+        name: results
+        schema: public

@@ -1,0 +1,11 @@
+table:
+  name: exercises
+  schema: public
+array_relationships:
+- name: practice_results
+  using:
+    foreign_key_constraint_on:
+      column: exerciseId
+      table:
+        name: practice_results
+        schema: public
