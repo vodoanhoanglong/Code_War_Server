@@ -58,10 +58,10 @@ func createAccount(ctx *actionContext, payload []byte) (interface{}, error) {
 
 	variables := map[string]interface{}{
 		"object": account_insert_input{
-			"email":      appInput.Data.Email,
-			"password":   string(passwordHashed),
-			"role":       appInput.Data.Role,
-			"randomHash": randomHashed,
+			"email":       appInput.Data.Email,
+			"password":    string(passwordHashed),
+			"role":        appInput.Data.Role,
+			"hashedToken": randomHashed,
 		},
 	}
 
