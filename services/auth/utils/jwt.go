@@ -85,7 +85,7 @@ func (ja *JWTAuth) EncodeToken(uid string) (*AccessToken, error) {
 	var query struct {
 		Accounts []struct {
 			ID         string `graphql:"id"`
-			RandomHash string `graphql:"randomHash"`
+			RandomHash string `graphql:"hashedToken"`
 		} `graphql:"account(where: $where, limit: 1)"`
 	}
 
