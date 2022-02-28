@@ -59,8 +59,8 @@ func changeAccountPassword(ctx *actionContext, payload []byte) (interface{}, err
 			"id": input.Data.AccountID,
 		},
 		"set": account_set_input{
-			"password":   string(passwordHashed),
-			"randomHash": string(randomHashed),
+			"password":    string(passwordHashed),
+			"hashedToken": string(randomHashed),
 		},
 	}
 

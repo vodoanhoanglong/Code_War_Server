@@ -214,7 +214,7 @@ func (ja *JWTAuth) RefreshToken(refreshToken string, accessToken string) (*Acces
 			"id": decodedRefreshToken.Subject,
 		},
 		"set": account_set_input{
-			"randomHash": string(randomHashed),
+			"hashedToken": string(randomHashed),
 		},
 	}
 
@@ -265,7 +265,7 @@ func (ja *JWTAuth) checkRandomHash(accountId string, randomHash string) bool {
 			"id": map[string]interface{}{
 				"_eq": accountId,
 			},
-			"randomHash": map[string]interface{}{
+			"hashedToken": map[string]interface{}{
 				"_eq": randomHash,
 			},
 		},
