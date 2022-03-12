@@ -22,5 +22,5 @@ JWT_ISSUER=https://nexlab.tech
 TIMEZONE=Asia/Saigon
 PHONE_CODE=84
 
-EMAIL=longvonexlab@gmail.com 
-EMAIL_PASSWORD=longloi123
+EMAIL=youremail 
+EMAIL_PASSWORD=yourpassword
