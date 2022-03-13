@@ -256,7 +256,7 @@ func (ja *JWTAuth) checkRandomHash(accountId string, randomHash string) bool {
 	var query struct {
 		Accounts []struct {
 			ID         string `graphql:"id"`
-			RandomHash string `graphql:"randomHash"`
+			RandomHash string `graphql:"hashedToken"`
 		} `graphql:"account(where: $where, limit: 1)"`
 	}
 
