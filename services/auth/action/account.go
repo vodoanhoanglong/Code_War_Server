@@ -21,6 +21,7 @@ type CreateAccountInput struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
 	Role     string `json:"role"`
+	FullName string `json:"full_name"`
 }
 
 // createAccount create or assign user to specific app
@@ -51,13 +52,14 @@ func createAccount(ctx *actionContext, payload []byte) (interface{}, error) {
 		CreateAccount struct {
 			ID       string `graphql:"id"`
 			Email    string `graphql:"email"`
-			Password string `graphql:"password"`
+			FullName string `graphql:"fullName"`
 			Role     string `graphql:"role"`
 		} `graphql:"insert_account_one(object: $object)"`
 	}
 
 	variables := map[string]interface{}{
 		"object": account_insert_input{
+			"fullName":    appInput.Data.FullName,
 			"email":       appInput.Data.Email,
 			"password":    string(passwordHashed),
 			"role":        appInput.Data.Role,
@@ -72,6 +74,8 @@ func createAccount(ctx *actionContext, payload []byte) (interface{}, error) {
 	}
 
 	return map[string]string{
-		"id": query.CreateAccount.ID,
+		"id":        query.CreateAccount.ID,
+		"email":     query.CreateAccount.Email,
+		"full_name": query.CreateAccount.FullName,
 	}, nil
 }
