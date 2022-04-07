@@ -2,79 +2,36 @@ table:
   name: account
   schema: public
 array_relationships:
+- name: contest_results
+  using:
+    foreign_key_constraint_on:
+      column: accountId
+      table:
+        name: contest_results
+        schema: public
 - name: discusses
   using:
     foreign_key_constraint_on:
       column: accountId
       table:
-        name: discuss
+        name: discusses
         schema: public
-- name: practice_results
+- name: pratice_results
   using:
     foreign_key_constraint_on:
       column: accountId
       table:
-        name: practice_results
-        schema: public
-- name: results
-  using:
-    foreign_key_constraint_on:
-      column: accountId
-      table:
-        name: results
+        name: pratice_results
         schema: public
 select_permissions:
 - permission:
     allow_aggregations: true
     columns:
     - alias
-    - avatar_url
+    - avatarUrl
     - birthday
-    - created_at
-    - created_by
-    - email
-    - fullName
-    - gender
-    - id
-    - role
-    - status
-    - updated_at
-    - updated_by
-    filter:
-      id:
-        _eq: X-Hasura-User-Id
-  role: moderator
-- permission:
-    allow_aggregations: true
-    columns:
-    - alias
-    - avatar_url
-    - birthday
-    - created_at
-    - created_by
-    - email
-    - fullName
-    - gender
-    - id
-    - role
-    - status
-    - updated_at
-    - updated_by
-    filter:
-      id:
-        _eq: X-Hasura-User-Id
-  role: user
-update_permissions:
-- permission:
-    check:
-      id:
-        _eq: X-Hasura-User-Id
-    columns:
-    - alias
-    - avatar_url
-    - birthday
-    - created_at
-    - created_by
+    - createdAt
+    - createdBy
     - email
     - fullName
     - gender
@@ -82,36 +39,9 @@ update_permissions:
     - password
     - role
     - status
-    - updated_at
-    - updated_by
+    - updatedAt
+    - updatedBy
     filter:
       id:
         _eq: X-Hasura-User-Id
-    set:
-      updated_by: x-hasura--User-Id
-  role: moderator
-- permission:
-    check:
-      id:
-        _eq: X-Hasura-User-Id
-    columns:
-    - alias
-    - avatar_url
-    - birthday
-    - created_at
-    - created_by
-    - email
-    - fullName
-    - gender
-    - hashedToken
-    - password
-    - role
-    - status
-    - updated_at
-    - updated_by
-    filter:
-      id:
-        _eq: X-Hasura-User-Id
-    set:
-      updated_by: x-hasura--User-Id
   role: user

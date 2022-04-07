@@ -1,5 +1,5 @@
 table:
-  name: results
+  name: contest_results
   schema: public
 object_relationships:
 - name: account
