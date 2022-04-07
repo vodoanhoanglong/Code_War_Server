@@ -20,7 +20,6 @@ type account_pk_columns_input map[string]interface{}
 type CreateAccountInput struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
-	Role     string `json:"role"`
 	FullName string `json:"full_name"`
 }
 
@@ -62,7 +61,6 @@ func createAccount(ctx *actionContext, payload []byte) (interface{}, error) {
 			"fullName":    appInput.Data.FullName,
 			"email":       appInput.Data.Email,
 			"password":    string(passwordHashed),
-			"role":        appInput.Data.Role,
 			"hashedToken": randomHashed,
 		},
 	}
@@ -73,9 +71,16 @@ func createAccount(ctx *actionContext, payload []byte) (interface{}, error) {
 		return nil, util.ErrBadRequest(err)
 	}
 
+	token, err := ctx.JwtAuth.EncodeToken(query.CreateAccount.ID)
+
+	if err != nil {
+		return nil, err
+	}
+
 	return map[string]string{
-		"id":        query.CreateAccount.ID,
-		"email":     query.CreateAccount.Email,
-		"full_name": query.CreateAccount.FullName,
+		"id":           query.CreateAccount.ID,
+		"email":        query.CreateAccount.Email,
+		"full_name":    query.CreateAccount.FullName,
+		"access_token": token.AccessToken,
 	}, nil
 }

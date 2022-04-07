@@ -17,10 +17,10 @@ SESSION_KEY=random_secret
 SESSION_TTL=24h
 SESSION_REFRESH_TTL=720h
 DEFAULT_ROLE=user
-JWT_ISSUER=https://nexlab.tech
+JWT_ISSUER=https://github.com/vodoanhoanglong
 
 TIMEZONE=Asia/Saigon
 PHONE_CODE=84
 
-EMAIL=youremail 
+EMAIL=youremail
 EMAIL_PASSWORD=yourpassword

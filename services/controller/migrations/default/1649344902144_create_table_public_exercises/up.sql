@@ -1,0 +1,1 @@
+CREATE TABLE "public"."exercises" ("id" text NOT NULL DEFAULT gen_random_uuid(), "name" text, "des" text, "level" integer, "image" text, "output" json, "topic" text, "status" text NOT NULL DEFAULT '"active"', "createdAt" timestamptz NOT NULL DEFAULT now(), "createdBy" text, "updatedAt" timestamptz NOT NULL DEFAULT now(), "updatedBy" text, PRIMARY KEY ("id") );

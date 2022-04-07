@@ -13,12 +13,12 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
   controller:
-    image: hasura/graphql-engine:v2.2.0.cli-migrations-v3
+    image: hasura/graphql-engine:v2.3.1
     ports:
       - "8080"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.controller.rule=Host(`intern-demo-controller.nexlab.tech`)"
+    # labels:
+      # - "traefik.enable=true"
+      # - "traefik.http.routers.controller.rule=Host(`yourdomain.com`)"
     volumes:
       - ./services/controller/migrations:/hasura-migrations
       - ./services/controller/metadata:/hasura-metadata

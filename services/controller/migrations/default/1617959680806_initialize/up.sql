@@ -1,6 +1,6 @@
 CREATE DOMAIN email AS TEXT
 CHECK(
-   VALUE ~ '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+[.][a-zA-Z0-9-]+([.][a-zA-Z0-9-]+)?$'
+   VALUE ~ '^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$'
 );
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
@@ -14,10 +14,11 @@ DECLARE
   _new record;
 BEGIN
   _new := NEW;
-  _new."updated_at" = NOW();
+  _new."updatedAt" = NOW();
   RETURN _new;
 END;
 $$ LANGUAGE plpgsql;
+
 
 --------------------------------------------------
 -- TABLE public.account
@@ -25,15 +26,19 @@ $$ LANGUAGE plpgsql;
 CREATE TABLE "public"."account" (
   "id"                    TEXT NOT NULL DEFAULT gen_random_uuid(), 
   "email"                 email, 
-  "display_name"          TEXT, 
+  "fullName"              TEXT, 
   "password"              TEXT,
-  "avatar_url"            TEXT,
-  "role"                  TEXT NOT NULL, 
+  "avatarUrl"             TEXT,
+  "role"                  TEXT NOT NULL DEFAULT 'user', 
   "birthday"              DATE,
-  "created_at"            TIMESTAMPTZ NOT NULL DEFAULT now(), 
-  "updated_at"            TIMESTAMPTZ NOT NULL DEFAULT now(),  
-  "created_by"            TEXT NULL, 
-  "updated_by"            TEXT NULL,  
+  "gender"                TEXT,
+  "hashedToken"           TEXT,
+  "alias"                 TEXT,
+  "status"                TEXT NOT NULL DEFAULT 'active',
+  "createdAt"             TIMESTAMPTZ NOT NULL DEFAULT now(), 
+  "updatedAt"             TIMESTAMPTZ NOT NULL DEFAULT now(),  
+  "createdBy"             TEXT NULL, 
+  "updatedBy"             TEXT NULL,  
   PRIMARY KEY ("id")
 );
 
