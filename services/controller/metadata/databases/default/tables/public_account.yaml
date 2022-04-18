@@ -23,6 +23,24 @@ array_relationships:
       table:
         name: pratice_results
         schema: public
+insert_permissions:
+- permission:
+    backend_only: false
+    check:
+      id:
+        _eq: X-Hasura-User-Id
+    columns:
+    - alias
+    - avatarUrl
+    - birthday
+    - createdAt
+    - createdBy
+    - email
+    - fullName
+    - gender
+    - updatedAt
+    - updatedBy
+  role: user
 select_permissions:
 - permission:
     allow_aggregations: true
@@ -36,8 +54,29 @@ select_permissions:
     - fullName
     - gender
     - hashedToken
+    - id
     - password
     - role
+    - status
+    - updatedAt
+    - updatedBy
+    filter:
+      id:
+        _eq: X-Hasura-User-Id
+  role: user
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - alias
+    - avatarUrl
+    - birthday
+    - createdAt
+    - createdBy
+    - fullName
+    - gender
+    - hashedToken
+    - password
     - status
     - updatedAt
     - updatedBy
