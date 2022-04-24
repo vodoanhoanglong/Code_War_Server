@@ -34,9 +34,9 @@ input ChangeUserPasswordInput {
 }
 
 input CreateAccountInput {
-  email: String!
-  full_name: String!
-  password: String!
+  email: String
+  role: String!
+  password: String
 }
 
 input ChangeAccountPasswordInput {
@@ -82,9 +82,6 @@ type AffectedRowsOutput {
 
 type CreateAccountOutput {
   id: String
-  email: String
-  full_name: String
-  access_token: String
 }
 
 type AccessTokenOutput {

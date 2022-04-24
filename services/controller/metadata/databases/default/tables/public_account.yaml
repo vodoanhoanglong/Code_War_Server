@@ -1,46 +1,25 @@
 table:
   name: account
   schema: public
-array_relationships:
-- name: contest_results
-  using:
-    foreign_key_constraint_on:
-      column: accountId
-      table:
-        name: contest_results
-        schema: public
-- name: discusses
-  using:
-    foreign_key_constraint_on:
-      column: accountId
-      table:
-        name: discusses
-        schema: public
-- name: pratice_results
-  using:
-    foreign_key_constraint_on:
-      column: accountId
-      table:
-        name: pratice_results
-        schema: public
 select_permissions:
 - permission:
     allow_aggregations: true
     columns:
+    - birthday
     - alias
     - avatarUrl
-    - birthday
-    - createdAt
     - createdBy
     - email
     - fullName
     - gender
     - hashedToken
+    - id
     - password
     - role
     - status
-    - updatedAt
     - updatedBy
+    - createdAt
+    - updatedAt
     filter:
       id:
         _eq: X-Hasura-User-Id

@@ -1,10 +1,3 @@
 table:
   name: pratice_results
   schema: public
-object_relationships:
-- name: account
-  using:
-    foreign_key_constraint_on: accountId
-- name: exercise
-  using:
-    foreign_key_constraint_on: exerciseId
