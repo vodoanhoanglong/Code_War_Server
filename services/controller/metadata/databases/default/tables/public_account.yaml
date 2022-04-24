@@ -2,25 +2,45 @@ table:
   name: account
   schema: public
 select_permissions:
-- permission:
-    allow_aggregations: true
-    columns:
-    - birthday
-    - alias
-    - avatarUrl
-    - createdBy
-    - email
-    - fullName
-    - gender
-    - hashedToken
-    - id
-    - password
-    - role
-    - status
-    - updatedBy
-    - createdAt
-    - updatedAt
-    filter:
-      id:
-        _eq: X-Hasura-User-Id
-  role: user
+  - permission:
+      allow_aggregations: true
+      columns:
+        - birthday
+        - alias
+        - avatarUrl
+        - createdBy
+        - email
+        - fullName
+        - gender
+        - hashedToken
+        - id
+        - password
+        - role
+        - status
+        - updatedBy
+        - createdAt
+        - updatedAt
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+    role: user
+update_permissions:
+  - permission:
+      check: null
+      columns:
+        - alias
+        - avatarUrl
+        - birthday
+        - createdAt
+        - createdBy
+        - fullName
+        - gender
+        - hashedToken
+        - password
+        - status
+        - updatedAt
+        - updatedBy
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+    role: user
