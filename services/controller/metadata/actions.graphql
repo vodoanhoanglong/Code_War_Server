@@ -1,31 +1,21 @@
 type Mutation {
-  changeAccountPassword(
-    data: ChangeAccountPasswordInput!
-  ): MessageOutput
+  changeAccountPassword(data: ChangeAccountPasswordInput!): MessageOutput
 }
 
 type Mutation {
-  createAccount(
-    data: CreateAccountInput!
-  ): CreateAccountOutput
+  createAccount(data: CreateAccountInput!): CreateAccountOutput
 }
 
 type Mutation {
-  forgotPassword(
-    data: Input!
-  ): Output!
+  forgotPassword(data: Input!): Output!
 }
 
 type Mutation {
-  login(
-    data: LoginInput!
-  ): AccessTokenOutput!
+  login(data: LoginInput!): AccessTokenOutput!
 }
 
 type Mutation {
-  refreshToken(
-    data: RefreshTokenInput!
-  ): AccessTokenOutput!
+  refreshToken(data: RefreshTokenInput!): AccessTokenOutput!
 }
 
 input ChangeUserPasswordInput {
@@ -34,9 +24,9 @@ input ChangeUserPasswordInput {
 }
 
 input CreateAccountInput {
-  email: String
-  role: String!
-  password: String
+  email: String!
+  password: String!
+  full_name: String!
 }
 
 input ChangeAccountPasswordInput {
@@ -82,6 +72,9 @@ type AffectedRowsOutput {
 
 type CreateAccountOutput {
   id: String
+  email: String
+  full_name: String
+  access_token: String
 }
 
 type AccessTokenOutput {
@@ -112,4 +105,3 @@ type RevokeTokenOutput {
   refresh_token: String
   scope: String
 }
-
