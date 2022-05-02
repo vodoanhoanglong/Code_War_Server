@@ -1,3 +1,93 @@
 table:
   name: contests
   schema: public
+insert_permissions:
+- permission:
+    backend_only: false
+    check: {}
+    columns:
+    - createdBy
+    - des
+    - id
+    - logoUrl
+    - name
+    - status
+    - updatedBy
+    - createdAt
+    - endDate
+    - startDate
+    - updatedAt
+    set:
+      createdBy: x-hasura-User-Id
+  role: moderator
+select_permissions:
+- permission:
+    allow_aggregations: true
+    columns:
+    - createdBy
+    - des
+    - id
+    - logoUrl
+    - name
+    - status
+    - updatedBy
+    - createdAt
+    - endDate
+    - startDate
+    - updatedAt
+    filter: {}
+  role: anonymous
+- permission:
+    allow_aggregations: true
+    columns:
+    - createdBy
+    - des
+    - id
+    - logoUrl
+    - name
+    - status
+    - updatedBy
+    - createdAt
+    - endDate
+    - startDate
+    - updatedAt
+    filter: {}
+  role: moderator
+- permission:
+    allow_aggregations: true
+    columns:
+    - id
+    - name
+    - des
+    - startDate
+    - endDate
+    - logoUrl
+    - status
+    - createdAt
+    - createdBy
+    - updatedAt
+    - updatedBy
+    filter: {}
+  role: user
+update_permissions:
+- permission:
+    check:
+      updatedBy:
+        _eq: X-Hasura-User-Id
+    columns:
+    - createdAt
+    - createdBy
+    - des
+    - endDate
+    - logoUrl
+    - name
+    - startDate
+    - status
+    - updatedAt
+    - updatedBy
+    filter:
+      createdBy:
+        _eq: X-Hasura-User-Id
+    set:
+      updatedBy: x-hasura-User-Id
+  role: moderator
