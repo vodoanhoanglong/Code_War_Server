@@ -27,4 +27,5 @@ hasura2 console
 ```
 hasura2 migrate apply --all-databases
 hasura2 metadata apply
+hasura seed apply
 ```
