@@ -21,6 +21,7 @@ type CreateAccountInput struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
 	FullName string `json:"full_name"`
+	Role     string `json:"role"`
 }
 
 // createAccount create or assign user to specific app
@@ -61,6 +62,7 @@ func createAccount(ctx *actionContext, payload []byte) (interface{}, error) {
 			"fullName":    appInput.Data.FullName,
 			"email":       appInput.Data.Email,
 			"password":    string(passwordHashed),
+			"role":        appInput.Data.Role,
 			"hashedToken": randomHashed,
 		},
 	}
