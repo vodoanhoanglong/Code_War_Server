@@ -1,3 +1,40 @@
 table:
   name: pratice_results
   schema: public
+insert_permissions:
+- permission:
+    backend_only: false
+    check: {}
+    columns:
+    - id
+    - accountId
+    - exerciseId
+    - point
+    - excuteTime
+    - status
+    - createdAt
+    - createdBy
+    - updatedAt
+    - updatedBy
+    - memory
+    set:
+      accountId: x-hasura-User-Id
+      createdBy: x-hasura-User-Id
+  role: user
+select_permissions:
+- permission:
+    allow_aggregations: true
+    columns:
+    - id
+    - accountId
+    - exerciseId
+    - point
+    - excuteTime
+    - status
+    - createdAt
+    - createdBy
+    - updatedAt
+    - updatedBy
+    - memory
+    filter: {}
+  role: user
