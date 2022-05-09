@@ -2,39 +2,37 @@ table:
   name: exercises
   schema: public
 select_permissions:
-- permission:
-    allow_aggregations: true
-    columns:
-    - level
-    - input
-    - output
-    - createdBy
-    - des
-    - id
-    - image
-    - name
-    - status
-    - topic
-    - updatedBy
-    - createdAt
-    - updatedAt
-    filter: {}
-  role: anonymous
-- permission:
-    allow_aggregations: true
-    columns:
-    - level
-    - input
-    - output
-    - createdBy
-    - des
-    - id
-    - image
-    - name
-    - status
-    - topic
-    - updatedBy
-    - createdAt
-    - updatedAt
-    filter: {}
-  role: user
+  - permission:
+      allow_aggregations: true
+      columns:
+        - level
+        - metadata
+        - createdBy
+        - des
+        - id
+        - image
+        - name
+        - status
+        - topic
+        - updatedBy
+        - createdAt
+        - updatedAt
+      filter: {}
+    role: anonymous
+  - permission:
+      allow_aggregations: true
+      columns:
+        - level
+        - metadata
+        - createdBy
+        - des
+        - id
+        - image
+        - name
+        - status
+        - topic
+        - updatedBy
+        - createdAt
+        - updatedAt
+      filter: {}
+    role: user
