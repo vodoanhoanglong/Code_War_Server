@@ -80,7 +80,7 @@ CREATE TABLE "public"."exercises"
     "level"     integer,
     "image"     text,
     "metadata"  jsonb       NOT NULL DEFAULT jsonb_build_array(),
-    "topic"     text,
+    "topic"     jsonb       NOT NULL DEFAULT jsonb_build_array(),
     "status"    text        NOT NULL DEFAULT 'active',
     "createdAt" timestamptz NOT NULL DEFAULT now(),
     "createdBy" text,
