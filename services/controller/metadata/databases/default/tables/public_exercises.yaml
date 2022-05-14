@@ -26,6 +26,25 @@ select_permissions:
     columns:
     - level
     - metadata
+    - topic
+    - createdBy
+    - des
+    - id
+    - image
+    - name
+    - status
+    - updatedBy
+    - createdAt
+    - updatedAt
+    filter:
+      status:
+        _eq: active
+  role: moderator
+- permission:
+    allow_aggregations: true
+    columns:
+    - level
+    - metadata
     - createdBy
     - des
     - id
@@ -40,3 +59,25 @@ select_permissions:
       status:
         _eq: active
   role: user
+update_permissions:
+- permission:
+    check: {}
+    columns:
+    - level
+    - metadata
+    - topic
+    - createdBy
+    - des
+    - id
+    - image
+    - name
+    - status
+    - updatedBy
+    - createdAt
+    - updatedAt
+    filter:
+      status:
+        _eq: active
+    set:
+      updatedBy: x-hasura-User-Id
+  role: moderator

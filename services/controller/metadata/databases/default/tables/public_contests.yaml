@@ -77,9 +77,7 @@ select_permissions:
   role: user
 update_permissions:
 - permission:
-    check:
-      updatedBy:
-        _eq: X-Hasura-User-Id
+    check: {}
     columns:
     - createdAt
     - createdBy
@@ -92,8 +90,8 @@ update_permissions:
     - updatedAt
     - updatedBy
     filter:
-      createdBy:
-        _eq: X-Hasura-User-Id
+      status:
+        _eq: active
     set:
       updatedBy: x-hasura-User-Id
   role: moderator
