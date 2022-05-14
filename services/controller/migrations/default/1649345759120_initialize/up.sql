@@ -97,6 +97,7 @@ CREATE TABLE "public"."pratice_results"
     "point"      float8,
     "memory"     integer,
     "excuteTime" float8,
+    "caseFailed" jsonb       NOT NULL DEFAULT jsonb_build_array(),
     "status"     text        NOT NULL DEFAULT 'active',
     "createdAt"  timestamptz NOT NULL DEFAULT now(),
     "createdBy"  text,

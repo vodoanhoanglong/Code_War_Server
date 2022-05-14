@@ -6,17 +6,18 @@ insert_permissions:
     backend_only: false
     check: {}
     columns:
-    - id
     - accountId
-    - exerciseId
-    - point
-    - excuteTime
-    - status
+    - caseFailed
     - createdAt
     - createdBy
+    - excuteTime
+    - exerciseId
+    - id
+    - memory
+    - point
+    - status
     - updatedAt
     - updatedBy
-    - memory
     set:
       accountId: x-hasura-User-Id
       createdBy: x-hasura-User-Id
@@ -25,16 +26,17 @@ select_permissions:
 - permission:
     allow_aggregations: true
     columns:
-    - id
     - accountId
-    - exerciseId
-    - point
-    - excuteTime
-    - status
+    - caseFailed
     - createdAt
     - createdBy
+    - excuteTime
+    - exerciseId
+    - id
+    - memory
+    - point
+    - status
     - updatedAt
     - updatedBy
-    - memory
     filter: {}
   role: user
