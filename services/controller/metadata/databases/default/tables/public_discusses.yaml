@@ -1,3 +1,42 @@
 table:
   name: discusses
   schema: public
+insert_permissions:
+- permission:
+    backend_only: false
+    check: {}
+    columns:
+    - accountId
+    - content
+    - createdBy
+    - exerciseId
+    - floor
+    - id
+    - status
+    - title
+    - updatedBy
+    - createdAt
+    - updatedAt
+    set:
+      accountId: x-hasura-User-Id
+      createdBy: x-hasura-User-Id
+  role: user
+select_permissions:
+- permission:
+    allow_aggregations: true
+    columns:
+    - accountId
+    - content
+    - createdBy
+    - exerciseId
+    - floor
+    - id
+    - status
+    - title
+    - updatedBy
+    - createdAt
+    - updatedAt
+    filter:
+      status:
+        _eq: active
+  role: user

@@ -35,7 +35,9 @@ select_permissions:
     - endDate
     - startDate
     - updatedAt
-    filter: {}
+    filter:
+      status:
+        _eq: active
   role: anonymous
 - permission:
     allow_aggregations: true
@@ -51,7 +53,9 @@ select_permissions:
     - endDate
     - startDate
     - updatedAt
-    filter: {}
+    filter:
+      status:
+        _eq: active
   role: moderator
 - permission:
     allow_aggregations: true
@@ -67,7 +71,9 @@ select_permissions:
     - createdBy
     - updatedAt
     - updatedBy
-    filter: {}
+    filter:
+      status:
+        _eq: active
   role: user
 update_permissions:
 - permission:

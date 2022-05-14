@@ -56,22 +56,6 @@ EXECUTE PROCEDURE "public"."set_current_timestamp_updated_at"();
 --------------------------------------------------
 -- END TABLE public.account
 --------------------------------------------------
-CREATE TABLE "public"."discusses"
-(
-    "id"        text        NOT NULL DEFAULT gen_random_uuid(),
-    "floor"     text,
-    "title"     text,
-    "content"   text,
-    "status"    text        NOT NULL DEFAULT 'active',
-    "createdAt" Timestamp   NOT NULL DEFAULT now(),
-    "createdBy" text,
-    "updatedAt" timestamptz NOT NULL DEFAULT now(),
-    "updatedBy" text,
-    "accountId" text        NOT NULL,
-    PRIMARY KEY ("id"),
-    FOREIGN KEY ("accountId") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict
-);
-
 CREATE TABLE "public"."exercises"
 (
     "id"        text        NOT NULL DEFAULT gen_random_uuid(),
@@ -87,6 +71,24 @@ CREATE TABLE "public"."exercises"
     "updatedAt" timestamptz NOT NULL DEFAULT now(),
     "updatedBy" text,
     PRIMARY KEY ("id")
+);
+
+CREATE TABLE "public"."discusses"
+(
+    "id"         text        NOT NULL DEFAULT gen_random_uuid(),
+    "floor"      text,
+    "title"      text,
+    "content"    text,
+    "status"     text        NOT NULL DEFAULT 'active',
+    "createdAt"  Timestamp   NOT NULL DEFAULT now(),
+    "createdBy"  text,
+    "updatedAt"  timestamptz NOT NULL DEFAULT now(),
+    "updatedBy"  text,
+    "accountId"  text        NOT NULL,
+    "exerciseId" text        NOT NULL,
+    PRIMARY KEY ("id"),
+    FOREIGN KEY ("accountId") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
+    FOREIGN KEY ("exerciseId") REFERENCES "public"."exercises" ("id") ON UPDATE restrict ON DELETE restrict
 );
 
 CREATE TABLE "public"."pratice_results"

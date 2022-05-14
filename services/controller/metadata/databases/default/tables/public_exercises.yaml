@@ -17,7 +17,9 @@ select_permissions:
     - updatedBy
     - createdAt
     - updatedAt
-    filter: {}
+    filter:
+      status:
+        _eq: active
   role: anonymous
 - permission:
     allow_aggregations: true
@@ -34,5 +36,7 @@ select_permissions:
     - updatedBy
     - createdAt
     - updatedAt
-    filter: {}
+    filter:
+      status:
+        _eq: active
   role: user
