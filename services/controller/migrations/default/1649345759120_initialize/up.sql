@@ -161,3 +161,20 @@ CREATE TABLE "public"."contest_results"
     FOREIGN KEY ("contestId") REFERENCES "public"."contests" ("id") ON UPDATE restrict ON DELETE restrict,
     FOREIGN KEY ("questionId") REFERENCES "public"."questions" ("id") ON UPDATE restrict ON DELETE restrict
 );
+
+CREATE TABLE "public"."discuss_reacts"
+(
+    "id"        text        NOT NULL DEFAULT gen_random_uuid(),
+    "accountId" text        NOT NULL,
+    "discussId" text        NOT NULL,
+    "reactType" text        NOT NULL DEFAULT 'like',
+    "status"    text        NOT NULL DEFAULT 'active',
+    "createdAt" timestamptz NOT NULL DEFAULT now(),
+    "createdBy" text,
+    "updatedAt" text        NOT NULL DEFAULT now(),
+    "updatedBy" text,
+    PRIMARY KEY ("id"),
+    FOREIGN KEY ("discussId") REFERENCES "public"."discusses" ("id") ON UPDATE restrict ON DELETE restrict,
+    FOREIGN KEY ("accountId") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
+    UNIQUE ("id")
+);

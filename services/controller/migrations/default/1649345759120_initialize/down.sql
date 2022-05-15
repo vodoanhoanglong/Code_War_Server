@@ -10,5 +10,7 @@ DROP TABLE "public"."exercises";
 
 DROP TABLE "public"."discusses";
 
+DROP TABLE "public"."discuss_reacts";
+
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;

@@ -1,6 +1,7 @@
 - "!include public_account.yaml"
 - "!include public_contest_results.yaml"
 - "!include public_contests.yaml"
+- "!include public_discuss_reacts.yaml"
 - "!include public_discusses.yaml"
 - "!include public_exercise_results.yaml"
 - "!include public_exercises.yaml"
