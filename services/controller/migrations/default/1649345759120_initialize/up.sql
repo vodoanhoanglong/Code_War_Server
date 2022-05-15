@@ -179,5 +179,6 @@ CREATE TABLE "public"."discuss_reacts"
     PRIMARY KEY ("id"),
     FOREIGN KEY ("discussId") REFERENCES "public"."discusses" ("id") ON UPDATE restrict ON DELETE restrict,
     FOREIGN KEY ("accountId") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
-    UNIQUE ("id")
+    UNIQUE ("id"),
+    UNIQUE ("accountId", "discussId")
 );
