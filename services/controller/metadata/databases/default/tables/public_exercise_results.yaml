@@ -1,5 +1,5 @@
 table:
-  name: pratice_results
+  name: exercise_results
   schema: public
 insert_permissions:
 - permission:

@@ -28,6 +28,12 @@ type Mutation {
   ): AccessTokenOutput!
 }
 
+type Mutation {
+  resultExercise(
+    data: ResultExerciseInput!
+  ): String!
+}
+
 input ChangeUserPasswordInput {
   user_id: String!
   new_password: String!
@@ -69,6 +75,19 @@ input RevokeTokenInput {
   access_token: String!
   refresh_token: String!
   auth_provider_type: String
+}
+
+input SampleInput {
+  username: String!
+  password: String!
+}
+
+input ResultExerciseInput {
+  exerciseId: String!
+  excuteTime: float8!
+  memory: Int!
+  point: float8!
+  caseFailed: jsonb!
 }
 
 type MessageOutput {
@@ -115,5 +134,9 @@ type RevokeTokenOutput {
   expires_in: Int!
   refresh_token: String
   scope: String
+}
+
+type SampleOutput {
+  accessToken: String!
 }
 

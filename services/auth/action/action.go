@@ -16,6 +16,7 @@ func New(hc Config) (*action.Router, error) {
 		actionForgotPassword:      hc.wrap(forgotPassword),
 		actionUploadFile:          hc.wrap(uploadFile),
 		actionMoveFile:            hc.wrap(moveFile),
+		actionSaveResultExercise:  hc.wrap(saveResultExercise),
 	})
 
 	if err != nil {

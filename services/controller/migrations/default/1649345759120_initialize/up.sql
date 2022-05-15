@@ -91,7 +91,7 @@ CREATE TABLE "public"."discusses"
     FOREIGN KEY ("exerciseId") REFERENCES "public"."exercises" ("id") ON UPDATE restrict ON DELETE restrict
 );
 
-CREATE TABLE "public"."pratice_results"
+CREATE TABLE "public"."exercise_results"
 (
     "id"         text        NOT NULL DEFAULT gen_random_uuid(),
     "accountId"  text        NOT NULL,

@@ -4,7 +4,7 @@ DROP TABLE "public"."questions";
 
 DROP TABLE "public"."contests";
 
-DROP TABLE "public"."pratice_results";
+DROP TABLE "public"."exercise_results";
 
 DROP TABLE "public"."exercises";
 
