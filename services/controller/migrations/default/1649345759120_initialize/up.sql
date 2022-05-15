@@ -56,6 +56,23 @@ EXECUTE PROCEDURE "public"."set_current_timestamp_updated_at"();
 --------------------------------------------------
 -- END TABLE public.account
 --------------------------------------------------
+CREATE TABLE "public"."contests"
+(
+    "id"        text        NOT NULL DEFAULT gen_random_uuid(),
+    "name"      text        NOT NULL,
+    "des"       text,
+    "startDate" timestamptz,
+    "endDate"   timestamptz,
+    "logoUrl"   text,
+    "status"    text        NOT NULL DEFAULT 'active',
+    "createdAt" timestamptz NOT NULL DEFAULT now(),
+    "createdBy" text,
+    "updatedAt" timestamptz NOT NULL DEFAULT now(),
+    "updatedBy" text,
+    PRIMARY KEY ("id"),
+    UNIQUE ("name")
+);
+
 CREATE TABLE "public"."exercises"
 (
     "id"        text        NOT NULL DEFAULT gen_random_uuid(),
@@ -65,12 +82,15 @@ CREATE TABLE "public"."exercises"
     "image"     text,
     "metadata"  jsonb       NOT NULL DEFAULT jsonb_build_array(),
     "topic"     jsonb       NOT NULL DEFAULT jsonb_build_array(),
+    "contestId" text,
     "status"    text        NOT NULL DEFAULT 'active',
     "createdAt" timestamptz NOT NULL DEFAULT now(),
     "createdBy" text,
     "updatedAt" timestamptz NOT NULL DEFAULT now(),
     "updatedBy" text,
-    PRIMARY KEY ("id")
+    PRIMARY KEY ("id"),
+    FOREIGN KEY ("contestId") REFERENCES "public"."contests" ("id") ON UPDATE restrict ON DELETE restrict
+
 );
 
 CREATE TABLE "public"."discusses"
@@ -108,23 +128,6 @@ CREATE TABLE "public"."exercise_results"
     PRIMARY KEY ("id"),
     FOREIGN KEY ("accountId") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
     FOREIGN KEY ("exerciseId") REFERENCES "public"."exercises" ("id") ON UPDATE restrict ON DELETE restrict
-);
-
-CREATE TABLE "public"."contests"
-(
-    "id"        text        NOT NULL DEFAULT gen_random_uuid(),
-    "name"      text        NOT NULL,
-    "des"       text,
-    "startDate" timestamptz,
-    "endDate"   timestamptz,
-    "logoUrl"   text,
-    "status"    text        NOT NULL DEFAULT 'active',
-    "createdAt" timestamptz NOT NULL DEFAULT now(),
-    "createdBy" text,
-    "updatedAt" timestamptz NOT NULL DEFAULT now(),
-    "updatedBy" text,
-    PRIMARY KEY ("id"),
-    UNIQUE ("name")
 );
 
 CREATE TABLE "public"."questions"

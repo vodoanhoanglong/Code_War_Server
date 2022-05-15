@@ -8,6 +8,14 @@ object_relationships:
 - name: exercise
   using:
     foreign_key_constraint_on: exerciseId
+array_relationships:
+- name: discuss_reacts
+  using:
+    foreign_key_constraint_on:
+      column: discussId
+      table:
+        name: discuss_reacts
+        schema: public
 insert_permissions:
 - permission:
     backend_only: false
