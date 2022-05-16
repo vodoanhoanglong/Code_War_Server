@@ -1,4 +1,5 @@
 - "!include public_account.yaml"
+- "!include public_blogs.yaml"
 - "!include public_contest_results.yaml"
 - "!include public_contests.yaml"
 - "!include public_discuss_reacts.yaml"

@@ -93,6 +93,22 @@ CREATE TABLE "public"."exercises"
 
 );
 
+CREATE TABLE "public"."blogs"
+(
+    "id"         text        NOT NULL DEFAULT gen_random_uuid(),
+    "title"      text,
+    "content"    text,
+    "isApproved" boolean     NOT NULL DEFAULT false,
+    "status"     text        NOT NULL DEFAULT 'active',
+    "createdAt"  Timestamp   NOT NULL DEFAULT now(),
+    "createdBy"  text,
+    "updatedAt"  timestamptz NOT NULL DEFAULT now(),
+    "updatedBy"  text,
+    "accountId"  text        NOT NULL,
+    PRIMARY KEY ("id"),
+    FOREIGN KEY ("accountId") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict
+);
+
 CREATE TABLE "public"."discusses"
 (
     "id"         text        NOT NULL DEFAULT gen_random_uuid(),
@@ -106,9 +122,11 @@ CREATE TABLE "public"."discusses"
     "updatedBy"  text,
     "accountId"  text        NOT NULL,
     "exerciseId" text        NOT NULL,
+    "blogId"     text,
     PRIMARY KEY ("id"),
     FOREIGN KEY ("accountId") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
-    FOREIGN KEY ("exerciseId") REFERENCES "public"."exercises" ("id") ON UPDATE restrict ON DELETE restrict
+    FOREIGN KEY ("exerciseId") REFERENCES "public"."exercises" ("id") ON UPDATE restrict ON DELETE restrict,
+    FOREIGN KEY ("blogId") REFERENCES "public"."blogs" ("id") ON UPDATE restrict ON DELETE restrict
 );
 
 CREATE TABLE "public"."exercise_results"

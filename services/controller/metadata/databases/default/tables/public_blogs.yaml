@@ -1,23 +1,17 @@
 table:
-  name: discusses
+  name: blogs
   schema: public
 object_relationships:
 - name: account
   using:
     foreign_key_constraint_on: accountId
-- name: blog
-  using:
-    foreign_key_constraint_on: blogId
-- name: exercise
-  using:
-    foreign_key_constraint_on: exerciseId
 array_relationships:
-- name: discuss_reacts
+- name: discusses
   using:
     foreign_key_constraint_on:
-      column: discussId
+      column: blogId
       table:
-        name: discuss_reacts
+        name: discusses
         schema: public
 insert_permissions:
 - permission:
@@ -25,17 +19,15 @@ insert_permissions:
     check: {}
     columns:
     - id
-    - floor
     - title
     - content
+    - isApproved
     - status
     - createdAt
     - createdBy
     - updatedAt
     - updatedBy
     - accountId
-    - exerciseId
-    - blogId
     set:
       accountId: x-hasura-User-Id
       createdBy: x-hasura-User-Id
@@ -45,17 +37,14 @@ insert_permissions:
     check: {}
     columns:
     - accountId
-    - blogId
     - content
+    - createdAt
     - createdBy
-    - exerciseId
-    - floor
     - id
     - status
     - title
-    - updatedBy
-    - createdAt
     - updatedAt
+    - updatedBy
     set:
       accountId: x-hasura-User-Id
       createdBy: x-hasura-User-Id
@@ -64,12 +53,10 @@ select_permissions:
 - permission:
     allow_aggregations: true
     columns:
+    - isApproved
     - accountId
-    - blogId
     - content
     - createdBy
-    - exerciseId
-    - floor
     - id
     - status
     - title
@@ -77,25 +64,16 @@ select_permissions:
     - createdAt
     - updatedAt
     filter:
-      _and:
-      - status:
-          _eq: active
-      - account:
-          status:
-            _eq: active
-      - exercise:
-          status:
-            _eq: active
+      status:
+        _eq: active
   role: moderator
 - permission:
     allow_aggregations: true
     columns:
+    - isApproved
     - accountId
-    - blogId
     - content
     - createdBy
-    - exerciseId
-    - floor
     - id
     - status
     - title
@@ -103,13 +81,28 @@ select_permissions:
     - createdAt
     - updatedAt
     filter:
-      _and:
-      - status:
-          _eq: active
-      - account:
-          status:
-            _eq: active
-      - exercise:
-          status:
-            _eq: active
+      status:
+        _eq: active
   role: user
+update_permissions:
+- permission:
+    check:
+      status:
+        _eq: active
+    columns:
+    - isApproved
+    - accountId
+    - content
+    - createdBy
+    - id
+    - status
+    - title
+    - updatedBy
+    - createdAt
+    - updatedAt
+    filter:
+      status:
+        _eq: active
+    set:
+      updatedBy: x-hasura-User-Id
+  role: moderator
