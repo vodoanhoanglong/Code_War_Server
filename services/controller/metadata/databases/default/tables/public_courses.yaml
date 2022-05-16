@@ -1,32 +1,32 @@
 table:
-  name: exercises
+  name: courses
   schema: public
 object_relationships:
-- name: concept
+- name: account
   using:
-    foreign_key_constraint_on: conceptId
-- name: contest
+    foreign_key_constraint_on: createdBy
+array_relationships:
+- name: concepts
   using:
-    foreign_key_constraint_on: contestId
+    foreign_key_constraint_on:
+      column: courseId
+      table:
+        name: concepts
+        schema: public
 insert_permissions:
 - permission:
     backend_only: false
     check: {}
     columns:
-    - conceptId
-    - contestId
-    - createdAt
     - createdBy
     - des
     - id
     - image
-    - level
-    - metadata
     - name
     - status
-    - topic
-    - updatedAt
     - updatedBy
+    - createdAt
+    - updatedAt
     set:
       createdBy: x-hasura-User-Id
   role: moderator
@@ -34,20 +34,15 @@ select_permissions:
 - permission:
     allow_aggregations: true
     columns:
-    - conceptId
-    - contestId
-    - createdAt
     - createdBy
     - des
     - id
     - image
-    - level
-    - metadata
     - name
     - status
-    - topic
-    - updatedAt
     - updatedBy
+    - createdAt
+    - updatedAt
     filter:
       status:
         _eq: active
@@ -55,18 +50,13 @@ select_permissions:
 - permission:
     allow_aggregations: true
     columns:
-    - conceptId
-    - contestId
+    - id
+    - name
+    - des
+    - image
+    - status
     - createdAt
     - createdBy
-    - des
-    - id
-    - image
-    - level
-    - metadata
-    - name
-    - status
-    - topic
     - updatedAt
     - updatedBy
     filter:
@@ -76,42 +66,34 @@ select_permissions:
 - permission:
     allow_aggregations: true
     columns:
-    - conceptId
-    - contestId
-    - createdAt
     - createdBy
     - des
     - id
     - image
-    - level
-    - metadata
     - name
     - status
-    - topic
-    - updatedAt
     - updatedBy
+    - createdAt
+    - updatedAt
     filter:
       status:
         _eq: active
   role: user
 update_permissions:
 - permission:
-    check: {}
+    check:
+      status:
+        _eq: active
     columns:
-    - conceptId
-    - contestId
-    - createdAt
     - createdBy
     - des
     - id
     - image
-    - level
-    - metadata
     - name
     - status
-    - topic
-    - updatedAt
     - updatedBy
+    - createdAt
+    - updatedAt
     filter:
       status:
         _eq: active

@@ -12,5 +12,11 @@ DROP TABLE "public"."discusses";
 
 DROP TABLE "public"."discuss_reacts";
 
+DROP TABLE "public"."courses";
+
+DROP TABLE "public"."concepts";
+
+DROP TABLE "public"."blogs";
+
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
