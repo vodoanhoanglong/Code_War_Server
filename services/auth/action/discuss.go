@@ -30,13 +30,18 @@ func updateDiscussReact(ctx *actionContext, payload []byte) (interface{}, error)
 		DiscussReact []struct {
 			ID     string `graphql:"id"`
 			Status string `graphql:"status"`
-		} `graphql:"discuss_reacts(where: $where)"`
+		} `graphql:"discuss_reacts(where: $where, limit: 1)"`
 	}
 
 	variables := map[string]interface{}{
 		"where": discuss_reacts_bool_exp{
-			"id": map[string]string{
-				"_eq": appInput.Data.ID,
+			"_and": map[string]interface{}{
+				"accountId": map[string]string{
+					"_eq": ctx.Access.UserID,
+				},
+				"discussId": map[string]string{
+					"_eq": appInput.Data.DiscussId,
+				},
 			},
 		},
 	}
@@ -79,9 +84,15 @@ func updateDiscussReact(ctx *actionContext, payload []byte) (interface{}, error)
 		status = "active"
 	}
 
+	discussReactId := appInput.Data.ID
+
+	if discussReactId == "" {
+		discussReactId = query.DiscussReact[0].ID
+	}
+
 	variablesUpdate := map[string]interface{}{
 		"pk_columns": discuss_reacts_pk_columns_input{
-			"id": appInput.Data.ID,
+			"id": discussReactId,
 		},
 		"set": discuss_reacts_set_input{
 			"status": status,
