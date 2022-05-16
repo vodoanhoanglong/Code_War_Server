@@ -13,6 +13,13 @@ actions:
   permissions:
   - role: moderator
   - role: anonymous
+- name: discussReactUpdate
+  definition:
+    kind: synchronous
+    handler: '{{AUTH_BASE_URL}}/actions'
+  permissions:
+  - role: user
+  - role: moderator
 - name: forgotPassword
   definition:
     kind: synchronous
@@ -53,6 +60,7 @@ custom_types:
   - name: RevokeTokenInput
   - name: SampleInput
   - name: ResultExerciseInput
+  - name: DiscussReactUpdateInput
   objects:
   - name: MessageOutput
   - name: AffectedRowsOutput

@@ -11,6 +11,12 @@ type Mutation {
 }
 
 type Mutation {
+  discussReactUpdate(
+    data: DiscussReactUpdateInput!
+  ): String!
+}
+
+type Mutation {
   forgotPassword(
     data: Input!
   ): Output!
@@ -88,6 +94,11 @@ input ResultExerciseInput {
   memory: Int!
   point: float8!
   caseFailed: jsonb!
+}
+
+input DiscussReactUpdateInput {
+  id: String!
+  discussId: String!
 }
 
 type MessageOutput {
