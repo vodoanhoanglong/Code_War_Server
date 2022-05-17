@@ -1,6 +1,14 @@
 table:
   name: account
   schema: public
+array_relationships:
+- name: blogs
+  using:
+    foreign_key_constraint_on:
+      column: accountId
+      table:
+        name: blogs
+        schema: public
 select_permissions:
 - permission:
     allow_aggregations: true
