@@ -28,9 +28,7 @@ select_permissions:
     - updatedAt
     - createdBy
     - updatedBy
-    filter:
-      id:
-        _eq: X-Hasura-User-Id
+    filter: {}
   role: moderator
 - permission:
     allow_aggregations: true
@@ -50,7 +48,5 @@ select_permissions:
     - updatedBy
     - createdAt
     - updatedAt
-    filter:
-      id:
-        _eq: X-Hasura-User-Id
+    filter: {}
   role: user
