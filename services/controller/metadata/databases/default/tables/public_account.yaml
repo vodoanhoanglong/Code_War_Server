@@ -11,6 +11,12 @@ array_relationships:
         schema: public
 select_permissions:
 - permission:
+    columns:
+    - avatarUrl
+    - fullName
+    filter: {}
+  role: anonymous
+- permission:
     allow_aggregations: true
     columns:
     - id
