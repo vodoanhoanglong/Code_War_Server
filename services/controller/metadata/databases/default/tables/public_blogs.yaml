@@ -66,6 +66,23 @@ select_permissions:
     filter:
       status:
         _eq: active
+  role: anonymous
+- permission:
+    allow_aggregations: true
+    columns:
+    - isApproved
+    - accountId
+    - content
+    - createdBy
+    - id
+    - status
+    - title
+    - updatedBy
+    - createdAt
+    - updatedAt
+    filter:
+      status:
+        _eq: active
   role: moderator
 - permission:
     allow_aggregations: true
