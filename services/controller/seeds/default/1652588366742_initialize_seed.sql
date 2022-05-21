@@ -79,3 +79,138 @@ INSERT INTO public.courses (id, name, des, image, status, "createdAt", "createdB
 INSERT INTO public.courses (id, name, des, image, status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('cd46dd36-708b-40f4-bb99-e01fdc23af51', 'C# cơ bản', 'Khóa học lập trình C# kèm thực hành, khóa học sẽ giúp bạn làm quen với lập trình cũng như tạo nền tảng tư duy và kỹ năng cơ bản khi giải các bài tập.', 'https://codelearn.io/CodeCamp/CodeCamp/Upload/Course/3aa5f5e3e4cb4cb381288840a93c99eb.jpg', 'active', '2022-05-16 09:37:46.143748+00', '44bfcc07-a81a-45da-aa65-9197a3300f62', '2022-05-16 09:37:46.143748+00', NULL);
 INSERT INTO public.courses (id, name, des, image, status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('4f3d8ec1-5838-4b96-8c05-7a41bea6010f', 'Java cơ bản', 'Khóa học lập trình Java cơ bản cho người mới bắt đầu, khóa học này sẽ là nền tảng cho khóa Java nâng cao để tiến tới Java Web hay lập trình Android, ...', 'https://codelearn.io/CodeCamp/CodeCamp/Upload/Course/1e746fe3cbe448bda850d8b953a78954.jpg', 'active', '2022-05-16 09:38:34.202492+00', '44bfcc07-a81a-45da-aa65-9197a3300f62', '2022-05-16 09:38:34.202492+00', NULL);
 INSERT INTO public.courses (id, name, des, image, status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('413aa95f-09da-4a90-a075-9cd8de8b7016', 'Làm quen với SQL', 'Khóa học này sẽ giúp các lập trình viên nắm được nguyên tắc, cú pháp và cách thức hoạt động của SQL (Structured Query Language).', 'https://codelearn.io/CodeCamp/CodeCamp/Upload/Course/adbef92753d242bcb79ca8f74cd615a5.jpg', 'active', '2022-05-16 09:39:19.921067+00', '44bfcc07-a81a-45da-aa65-9197a3300f62', '2022-05-16 09:39:19.921067+00', NULL);
+
+INSERT INTO public.concepts (id, name, des, image, priority, "courseId", status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('a8b1ffb6-2452-40fe-806a-644d3f91dbda', 'First C++ Program', NULL, NULL, 1, 'ea15c7e1-6f32-4cf6-9116-6fd132d9a3ee', 'active', '2022-05-18 16:06:13.082795+00', NULL, '2022-05-18 16:06:13.082795+00', NULL);
+INSERT INTO public.concepts (id, name, des, image, priority, "courseId", status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('6ea2cac1-6d15-4125-832f-a3ab842f0c67', 'Variables and Data Types', NULL, NULL, 2, 'ea15c7e1-6f32-4cf6-9116-6fd132d9a3ee', 'active', '2022-05-18 16:06:21.856532+00', NULL, '2022-05-18 16:06:21.856532+00', NULL);
+INSERT INTO public.concepts (id, name, des, image, priority, "courseId", status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('46a2de40-4834-4967-9be5-7ef7539848b1', 'Basic Operators & Input', NULL, NULL, 3, 'ea15c7e1-6f32-4cf6-9116-6fd132d9a3ee', 'active', '2022-05-18 16:06:29.750344+00', NULL, '2022-05-18 16:06:29.750344+00', NULL);
+INSERT INTO public.concepts (id, name, des, image, priority, "courseId", status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('5a05dd15-6fae-4271-948f-4ab0f3531707', 'Selection statements', NULL, NULL, 4, 'ea15c7e1-6f32-4cf6-9116-6fd132d9a3ee', 'active', '2022-05-18 16:06:37.248655+00', NULL, '2022-05-18 16:06:37.248655+00', NULL);
+INSERT INTO public.concepts (id, name, des, image, priority, "courseId", status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('45a97637-95ab-4305-a810-de805b9fdf4d', 'Loops: for', NULL, NULL, 5, 'ea15c7e1-6f32-4cf6-9116-6fd132d9a3ee', 'active', '2022-05-18 16:06:45.96489+00', NULL, '2022-05-18 16:06:45.96489+00', NULL);
+INSERT INTO public.concepts (id, name, des, image, priority, "courseId", status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('f351d96a-5097-46d7-80b7-9e95b520d988', 'Loops: while and do-while', NULL, NULL, 6, 'ea15c7e1-6f32-4cf6-9116-6fd132d9a3ee', 'active', '2022-05-18 16:08:40.975611+00', NULL, '2022-05-18 16:08:40.975611+00', NULL);
+INSERT INTO public.exercises (id, name, des, level, image, metadata, topic, "contestId", "conceptId", status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('7e5ac639-3b46-4633-90a6-04c36d11e2be', 'Viết chương trình Hello World', '### Task
+Fill in the blank (`...`) to complete the program that displays the following line on the screen:
+```
+Hello World!
+```
+Read the theory and watch the video below to know how to solve this task.
+### Theory
+First, try to run this code:
+```
+#include<iostream>
+using namespace std;
+int main() {
+	cout << "Xin chao!";
+	return 0;
+}
+```
+When the above code is compiled and executed, it produces the following result:
+```
+Xin chao!
+```
+There are some statements in the code that you are not familiar with such as `#include<iostream>`, `using namespace std;`, `int main() {` or `return 0;` but you do not have to pay attention to them in this lesson. You can assume that they are the required parts of a C++ program.
+Now, replace `"Xin chao!"` on the line "`cout << "Xin chao!";`" with your name and run the code. For example, if your name is Minh, replace "Xin chao!" with "Minh" as below:
+```
+#include<iostream>
+using namespace std;
+int main() {
+	cout << "Minh";
+	return 0;
+}
+```
+When the above code is compiled and executed, it produces the following result:
+```
+Minh
+```
+In a C++ program, `cout <<` is used to print values on the screen.
+Now you can return to the Task and solve it or refer to the instruction below.
+### Instruction
+To solve the task, you just need to replace `...` with `cout << "Hello World!";` as the instruction in the video below (recommended to view in full screen mode):
+Code sample:
+```
+#include<iostream>
+using namespace std;
+int main() {
+	cout << "Hello World!";
+	return 0;
+}
+```', 1, NULL, '[{"time": 1000, "input": null, "point": 10, "output": "Hello World"}]', '["C++"]', NULL, 'a8b1ffb6-2452-40fe-806a-644d3f91dbda', 'active', '2022-05-18 16:19:50.618642+00', NULL, '2022-05-18 16:19:50.618642+00', NULL);
+INSERT INTO public.exercises (id, name, des, level, image, metadata, topic, "contestId", "conceptId", status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('51e548d0-ac7c-473d-ad6f-1d4eb14f8eb5', 'Câu lệnh cout', '### Task
+Write a program to display the text below on the screen:
+```
+Welcome to Codelearn.io!
+```
+### Instruction
+Use `cout <<` to output a text on the screen. For example, to print "`Welcome`", you can write a program using the following statements:
+```
+#include<iostream>
+using namespace std;
+int main() {
+	cout << "Welcome";
+	return 0;
+}
+```', 1, NULL, '[{"time": 1000, "input": null, "point": 10, "output": "Welcome"}]', '["C++"]', NULL, 'a8b1ffb6-2452-40fe-806a-644d3f91dbda', 'active', '2022-05-18 16:21:06.386275+00', NULL, '2022-05-18 16:21:06.386275+00', NULL);
+INSERT INTO public.exercises (id, name, des, level, image, metadata, topic, "contestId", "conceptId", status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('2727dbf2-ac42-48c1-aabd-1c13bc5c2d42', 'Tính tổng hai số', '### Task
+Write a program to calculate the sum of `12` and `15` and display the result on the screen.
+### Theory
+First, run the code sample below to calculate the sum of two given numbers:
+```
+#include<iostream>
+using namespace std;
+int main() {
+	cout << 8 + 4;
+	return 0;
+}
+```
+When the above code is compiled and executed, you can see that number `12` displays on the screen.
+This code is very simple: we use `cout <<` to display the sum of `8` and `4`.
+Similarly, you can create a simple calculation program by replacing `8 + 4` with other expressions like `9 - 7`:
+```
+#include<iostream>
+using namespace std;
+int main() {
+	cout << 9 - 7;
+	return 0;
+}
+```
+When the above code is compiled and executed, it produces the following result:
+```
+2
+```
+Now return to the Task and write a program to display the result of the sum of `12` and `15`.
+If you haven''t done this problem yet, please refer to the instruction below.
+### Instruction
+Code sample:
+```
+#include<iostream>
+using namespace std;
+int main() {
+	cout << 12 + 15;
+	return 0;
+}
+```', 1, NULL, '[{"time": 1000, "input": "5 5", "point": 5, "output": "10"}, {"time": 1500, "input": "8 7", "point": 5, "output": "15"}]', '["C++"]', NULL, 'a8b1ffb6-2452-40fe-806a-644d3f91dbda', 'active', '2022-05-18 16:22:13.469511+00', NULL, '2022-05-18 16:22:13.469511+00', NULL);
+
+
+INSERT INTO public.blogs (id, title, content, "isApproved", status, "createdAt", "createdBy", "updatedAt", "updatedBy", "accountId") VALUES ('30e0152e-8931-4466-baf5-6f60217a87f7', 'ReactJS with Typescript [Series]. Phần 1 Basic Typescript', 'Chào các bạn cộng đồng lập trình f8 mình cũng là một thành viên.Hôm nay mình muốn viết một series về ReactJS kết hợp với typescript . Mình mong mọi người sẽ đón nhận và trao đổi kiến thức với nhau.Bài viết này sẽ viết về những điều tuyệt vời và hay ho khi làm việc với typescript nhé.
+## **I. Giới thiệu về Typescript và cách cài đặt**
+1. Typescript là gì? Điểm mạnh và tại sao nên sử dụng.
+- TypeScript là một dự án mã nguồn mở được phát triển bởi Microsoft, nó có thể được coi là một phiên bản nâng cao của Javascript bởi việc bổ sung tùy chọn kiểu tĩnh và lớp hướng đối tượng mà điều này không có ở Javascript. TypeScript có thể sử dụng để phát triển các ứng dụng chạy ở client-side (Angular2) và server-side (NodeJS).
+![](https://files.fullstack.edu.vn/f8-prod/blog_posts/3523/62807a229e33b.png)
+- Như hình ở trên các bạn có thể thấy Typescript bao trọn Javascript và ES6 ngoài ra còn có Interfaces,Strongly Typed và Generics nữa cấu tạo thành Typescript.Qua đó chúng ta thấy Typescript sử dụng tất các các tính năng của ES6(ECMAScript 2015) như là class, module, destructuring…ngoài ra còn sử dụng các Interfaces, Generics ngoài ra còn có một số tính năng khác mình sẽ nói rõ ở phần dưới.Nhưng bản chất Typescript cũng sẽ compiles ra Javascript cũng có thể nói là Typescript là Javascript và browser thì không thể đọc được Typescript nên mới cần biên dịch ra Javascript để thực thi các lệnh và đó là đôi giới thiệu qua về Typescript.
+2.  Vậy tại sao nên dùng Typescript.
+- **Dễ học và dễ code :** Vì được kế thừa cũng như dựa trên các cú pháp từ javascript và code theo kiểu hướng đối tượng như class,interface,generics… nên sẽ dễ tiếp cận.
+- **Dễ scale dự án :** Với việc sử dụng các kỹ thuật mới nhất và lập trình hướng đối tượng nên TypeScript giúp chúng ta phát triển các dự án lớn một cách dễ dàng.Việc code dự án javascript với dự án càng lớn thì sẽ có rất nhiều kiểu dữ liệu đầu vào và đầu ra khác nhau và việc chúng ta phải nhớ hoặc phải mò lại code rất khổ sở cũng như không rõ sẽ làm cho việc code trở nên khó khăn nhưng đối với Typescript thì chúng ta sẽ biết rõ dữ liệu đầu vào (input) cũng như dữ liệu đầu ra (output) một cách rõ ràng giúp chúng ta thuận tiện khi code.Ngoài ra nó còn được phát triển bởi microsoft nên khi sử dụng cùng với VScode sẽ có rất nhiều các extendsions giúp hỗ trợ nhắc lệnh hoặc báo lỗi rất tốt.
+- **Được nhiều người sử dụng cũng như các Framework sự dụng :** Typescript được mọi người sử dụng Javascript rất yêu thích và chuyển qua sử dụng ngoài ra còn có các Framework khuyên khích sử dụng như ReactJS,AngularJS nên sẽ có cộng đồng phát triển rất mạnh hỗ trợ việc chúng ta học và làm viêc.
+', true, 'active', '2022-05-17 04:54:00.008418', NULL, '2022-05-17 04:54:00.008418+00', 'Võ Đoàn Hoàng Long', '545fbcb9-4437-4406-9248-e7f1efda55b9');
+INSERT INTO public.blogs (id, title, content, "isApproved", status, "createdAt", "createdBy", "updatedAt", "updatedBy", "accountId") VALUES ('207c3373-7c13-4990-8479-f26aa7162678', 'Rèn luyện tư duy và áp dụng kiến thức đã học vào thực hành', 'Mình có đọc qua vài bình luận ở dưới một số video trong khóa JS cơ bản và thấy một số bạn muốn có thêm bài tập thực hành (cụ thể là phần mảng/array và vòng lặp/loop), ngoài ra mình thấy khóa đó anh Sơn cũng chưa nói nhiều về phương pháp tư duy cũng như thuật toán nên mình muốn chia sẻ tới các bạn một số keyword để research cũng như thực hành để cải thiện kỹ năng bản thân (ngoài ra cũng test luôn chức năng viết blog xD trên F8)
+- Tìm hiểu bigO notation là gì ?
+- Swap element in array
+- Find max, min in array (with loop)
+- Linear search (optimal lieaner search - hay linear search with wall)
+- Cơ bản: insertion sort, selection sort, bubble sort…
+- Nâng cao: quick sort, merge sort, heap sort…
+- tìm hiểu thêm: sắp xếp mảng răng cưa, mảng 2 chiều…
+- sắp xếp xong thì tìm kiếm nhị phân **(binary search)**
+- Nâng cao tư duy bằng các thuật toán/ cách tiếp cận bài toán như **greedy** algorithm, **divide and conquer, backtracking**,… và các bài toán n-queen problem, knapsack problem…
+Bài tập và lý thuyết có thể tìm trên [w3school](https://www.w3schools.com/), [geeksforgeeks](https://www.geeksforgeeks.org/) hoặc trên youtube (recommend: [Abdul Bari](https://www.youtube.com/channel/UCZCFT11CWBi3MHNlGf019nw) - ông chú ấn độ uy tín khỏi bàn))),
+Về sách thì có mình đang đọc quyển [algorithm grokking](https://www.google.com/search?q=algorithm+grokking&source=lmns&bih=969&biw=1920&rlz=1C1BNSD_viRU979RU979&hl=vi&sa=X&ved=2ahUKEwjmlIHt2sD3AhWJp4sKHaIEBWoQ_AUoAHoECAEQAA) (chuyên về thuật toán, gồm psuedo code và hình ảnh, các tiếp cận dành cho người người mới bắt đầu nên cực dễ hiều, chỉ cần biết một số từ vựng tiếng anh là được) và [javascript the definitive guide](https://www.google.com/search?q=javascript+the+definitive+guide&rlz=1C1BNSD_viRU979RU979&oq=javascript+the+definitive+guide&aqs=chrome..69i57j0i512l2j0i22i30l2j69i60l3.4940j0j9&sourceid=chrome&ie=UTF-8) để hiều thêm về JS
+Những điều mình chia sẻ bên trên là những gì mình được học ở cấu trúc bài giảng ở đại học, nên các bạn có thể tin tưởng nhé. Mình cũng triển khai thử binary search với bubble sort thấy nó bao quát được khá nhiều, bao gồm cả vòng lặp while, for, làm việc với mảng… (và debug mệt nghỉ)))
+Chúc các bạn học tập vui vẻ, và cảm ơn anh Sơn vì khóa học rất hữu ích !!!', true, 'active', '2022-05-17 05:00:15.855513', NULL, '2022-05-17 05:00:15.855513+00', 'Võ Đoàn Hoàng Long', '545fbcb9-4437-4406-9248-e7f1efda55b9');
