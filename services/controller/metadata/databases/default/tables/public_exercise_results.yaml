@@ -26,6 +26,44 @@ select_permissions:
 - permission:
     allow_aggregations: true
     columns:
+    - excuteTime
+    - point
+    - memory
+    - caseFailed
+    - accountId
+    - createdBy
+    - exerciseId
+    - id
+    - status
+    - updatedBy
+    - createdAt
+    - updatedAt
+    filter:
+      status:
+        _eq: active
+  role: anonymous
+- permission:
+    allow_aggregations: true
+    columns:
+    - excuteTime
+    - point
+    - memory
+    - caseFailed
+    - accountId
+    - createdBy
+    - exerciseId
+    - id
+    - status
+    - updatedBy
+    - createdAt
+    - updatedAt
+    filter:
+      status:
+        _eq: active
+  role: moderator
+- permission:
+    allow_aggregations: true
+    columns:
     - accountId
     - caseFailed
     - createdAt

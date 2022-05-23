@@ -8,6 +8,14 @@ object_relationships:
 - name: contest
   using:
     foreign_key_constraint_on: contestId
+array_relationships:
+- name: exercise_results
+  using:
+    foreign_key_constraint_on:
+      column: exerciseId
+      table:
+        name: exercise_results
+        schema: public
 insert_permissions:
 - permission:
     backend_only: false
@@ -34,20 +42,21 @@ select_permissions:
 - permission:
     allow_aggregations: true
     columns:
+    - level
+    - metadata
+    - topic
+    - challengeId
     - conceptId
     - contestId
-    - createdAt
     - createdBy
     - des
     - id
     - image
-    - level
-    - metadata
     - name
     - status
-    - topic
-    - updatedAt
     - updatedBy
+    - createdAt
+    - updatedAt
     filter:
       status:
         _eq: active
@@ -55,6 +64,7 @@ select_permissions:
 - permission:
     allow_aggregations: true
     columns:
+    - challengeId
     - conceptId
     - contestId
     - createdAt
@@ -76,6 +86,7 @@ select_permissions:
 - permission:
     allow_aggregations: true
     columns:
+    - challengeId
     - conceptId
     - contestId
     - createdAt

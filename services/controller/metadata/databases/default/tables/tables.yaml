@@ -1,5 +1,6 @@
 - "!include public_account.yaml"
 - "!include public_blogs.yaml"
+- "!include public_challenges.yaml"
 - "!include public_concept_learned.yaml"
 - "!include public_concepts.yaml"
 - "!include public_contest_results.yaml"
