@@ -226,3 +226,28 @@ INSERT INTO public.challenges (id, name, des, image, priority, "startDate", "end
 INSERT INTO public.challenges (id, name, des, image, priority, "startDate", "endDate", status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('94694bb5-5f69-4ecf-8f5d-7c327bb343f5', 'Find the fastest search algorithm', 'You might have used the search feature many times with the CTRL + F key combination but did not pay attention or learn about the internal algorithm. For this challenge, you will try to find the fastest text search algorithm to compete other programmers.', 'https://codelearn.io/Themes/TheCodeCampPro/Resources/Images/challenge/vector-challenge.svg', 2, '2021-07-20 00:00:00+00', '2022-07-20 00:00:00+00', 'active', '2022-05-23 03:59:24.830955+00', 'b886c67e-f5cf-4246-942f-97d795af3082', '2022-05-23 03:59:24.830955+00', NULL);
 SELECT pg_catalog.setval('public.challenges_priority_seq', 2, true);
 
+INSERT INTO public.exercises (id, name, des, level, image, metadata, topic, "contestId", "conceptId", "challengeId", status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('bfb857c5-5c0b-4374-864c-494dc166c1c9', 'Find the fastest search algorithm', 'Chắc bạn cũng đã nhiều lần sử dụng tính năng tìm kiếm với tổ hợp phím CTRL + F nhưng lại không để ý hay tìm hiểu tới thuật toán bên trong. Với thử thách lần này bạn hãy thử tìm ra thuật toán tìm kiếm văn bản nhanh nhất cùng với các lập trình viên khác.
+### Câu hỏi
+Cho hai xâu ký tự `s1` và `s2`, bạn hãy viết hàm trả về số lần xuất hiện của `s2` trong `s1`.
+Ví dụ
+-   Với `s1 = "abccab", s2 = "ab"` thì output là `countOccurrences(s1, s2) = 2`.
+-   Với `s1 = "aaaa", s2 = "aa"` thì output là `countOccurrences(s1, s2) = 3`.
+Đầu vào/Đầu ra
+-   [Thời gian chạy] 0.5s với C++, 3s với Java và C#, 4s với Python, Go và JavaScript.
+-   [Đầu vào] string s1, s2\
+    `1 <= s1.size, s2.size <= 500000`
+-   [Đầu ra] Integer
+[](https://codelearn.io/challenge/thu-thach-9-tim-thuat-toan-tim-kiem-nhanh-nhat/2169334#)', 3, NULL, '[{"time": 500, "input": "abccab ab", "point": 10, "output": "2"}]', '["Challenge"]', NULL, NULL, '94694bb5-5f69-4ecf-8f5d-7c327bb343f5', 'active', '2022-05-23 09:25:46.005164+00', 'aa89ede9-26f1-4660-9aba-75b21f53e6c4', '2022-05-23 09:25:46.005164+00', NULL);
+INSERT INTO public.exercises (id, name, des, level, image, metadata, topic, "contestId", "conceptId", "challengeId", status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('d32355f2-1999-4eaa-964f-55d74d6e58d5', 'Finding the best algorithm - Competing other programers', 'Cho mảng các xâu ký tự `arr1` và `arr2`. Ứng với mỗi xâu trong `arr2` bạn hãy đếm xem trong `arr1` có bao nhiêu xâu được bắt đầu bởi xâu này. Kết quả trả về sẽ là mảng lưu số lần xuất hiện tương ứng.
+Ví dụ
+-   Với `arr1 = ["codelearn", "codeit", "coding"], arr2 = ["cod", "code"]` thì output là `numberOfPrefixes(arr1, arr2) = [3, 2]`.
+Đầu vào/Đầu ra
+-   [Giới hạn thời gian chạy] 1 giây với C++, 6 giây với Java và C#, 8s với Python, GO và Js.
+-   [Đầu vào] Array of string arr1\
+    `1 <= arr1.size <= 10000`\
+    `1 <= arr1[i].size <= 30`
+-   [Đầu vào] Array of string arr2\
+    `1 <= arr2.size <= 10000`\
+    `1 <= arr2[i].size <= 30`
+-   [Đầu ra] Array of integer', 3, NULL, '[{"time": 500, "input": "[''codelearn'', ''codeit'', ''coding''] [''cod'', ''code'']", "point": 10, "output": "[3, 2]"}]', '["Challenge"]', NULL, NULL, '8fd25ab9-46a7-484e-b0af-a9440f242753', 'active', '2022-05-23 09:21:47.969213+00', 'aa89ede9-26f1-4660-9aba-75b21f53e6c4', '2022-05-23 09:21:47.969213+00', NULL);
+
