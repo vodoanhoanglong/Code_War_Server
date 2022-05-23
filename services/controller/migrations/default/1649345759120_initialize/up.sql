@@ -122,24 +122,44 @@ CREATE TABLE "public"."concept_learned"
     FOREIGN KEY ("accountId") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict
 );
 
-CREATE TABLE "public"."exercises"
+CREATE TABLE "public"."challenges"
 (
     "id"        text        NOT NULL DEFAULT gen_random_uuid(),
-    "name"      text,
+    "name"      text        NOT NULL,
     "des"       text,
-    "level"     integer,
     "image"     text,
-    "metadata"  jsonb       NOT NULL DEFAULT jsonb_build_array(),
-    "topic"     jsonb       NOT NULL DEFAULT jsonb_build_array(),
-    "contestId" text,
-    "conceptId" text,
+    "priority"  serial,
+    "startDate" timestamptz,
+    "endDate"   timestamptz,
     "status"    text        NOT NULL DEFAULT 'active',
     "createdAt" timestamptz NOT NULL DEFAULT now(),
     "createdBy" text,
     "updatedAt" timestamptz NOT NULL DEFAULT now(),
     "updatedBy" text,
     PRIMARY KEY ("id"),
+    UNIQUE ("name")
+);
+
+CREATE TABLE "public"."exercises"
+(
+    "id"          text        NOT NULL DEFAULT gen_random_uuid(),
+    "name"        text,
+    "des"         text,
+    "level"       integer,
+    "image"       text,
+    "metadata"    jsonb       NOT NULL DEFAULT jsonb_build_array(),
+    "topic"       jsonb       NOT NULL DEFAULT jsonb_build_array(),
+    "contestId"   text,
+    "conceptId"   text,
+    "challengeId" text,
+    "status"      text        NOT NULL DEFAULT 'active',
+    "createdAt"   timestamptz NOT NULL DEFAULT now(),
+    "createdBy"   text,
+    "updatedAt"   timestamptz NOT NULL DEFAULT now(),
+    "updatedBy"   text,
+    PRIMARY KEY ("id"),
     FOREIGN KEY ("contestId") REFERENCES "public"."contests" ("id") ON UPDATE restrict ON DELETE restrict,
+    FOREIGN KEY ("challengeId") REFERENCES "public"."challenges" ("id") ON UPDATE restrict ON DELETE restrict,
     FOREIGN KEY ("conceptId") REFERENCES "public"."concepts" ("id") ON UPDATE restrict ON DELETE restrict
 );
 

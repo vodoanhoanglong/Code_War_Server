@@ -18,5 +18,7 @@ DROP TABLE "public"."concepts";
 
 DROP TABLE "public"."blogs";
 
+DROP TABLE "public"."challenges";
+
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
