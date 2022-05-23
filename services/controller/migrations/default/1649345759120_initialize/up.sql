@@ -137,6 +137,7 @@ CREATE TABLE "public"."challenges"
     "updatedAt" timestamptz NOT NULL DEFAULT now(),
     "updatedBy" text,
     PRIMARY KEY ("id"),
+    FOREIGN KEY ("createdBy") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
     UNIQUE ("name")
 );
 
