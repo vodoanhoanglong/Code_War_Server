@@ -56,3 +56,54 @@ select_permissions:
     - updatedAt
     filter: {}
   role: user
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - birthday
+    - alias
+    - avatarUrl
+    - createdBy
+    - email
+    - fullName
+    - gender
+    - hashedToken
+    - id
+    - password
+    - role
+    - status
+    - updatedBy
+    - createdAt
+    - updatedAt
+    filter:
+      status:
+        _eq: active
+    set:
+      updatedAt: now()
+      updatedBy: x-hasura-User-Id
+  role: moderator
+- permission:
+    check: null
+    columns:
+    - birthday
+    - alias
+    - avatarUrl
+    - createdBy
+    - email
+    - fullName
+    - gender
+    - hashedToken
+    - id
+    - password
+    - role
+    - status
+    - updatedBy
+    - createdAt
+    - updatedAt
+    filter:
+      status:
+        _eq: active
+    set:
+      updatedAt: now()
+      updatedBy: x-hasura-User-Id
+  role: user

@@ -230,7 +230,8 @@ CREATE TABLE "public"."contest_results"
     PRIMARY KEY ("id"),
     FOREIGN KEY ("accountId") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
     FOREIGN KEY ("contestId") REFERENCES "public"."contests" ("id") ON UPDATE restrict ON DELETE restrict,
-    FOREIGN KEY ("questionId") REFERENCES "public"."questions" ("id") ON UPDATE restrict ON DELETE restrict
+    FOREIGN KEY ("questionId") REFERENCES "public"."questions" ("id") ON UPDATE restrict ON DELETE restrict,
+    UNIQUE ("accountId", "contestId")
 );
 
 CREATE TABLE "public"."discuss_reacts"
