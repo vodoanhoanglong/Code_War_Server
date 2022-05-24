@@ -21,17 +21,18 @@ insert_permissions:
     backend_only: false
     check: {}
     columns:
+    - createdAt
     - createdBy
     - des
+    - endDate
     - id
     - logoUrl
     - name
-    - status
-    - updatedBy
-    - createdAt
-    - endDate
     - startDate
+    - status
+    - time
     - updatedAt
+    - updatedBy
     set:
       createdBy: x-hasura-User-Id
   role: moderator
@@ -39,6 +40,7 @@ select_permissions:
 - permission:
     allow_aggregations: true
     columns:
+    - time
     - createdBy
     - des
     - id
@@ -57,6 +59,7 @@ select_permissions:
 - permission:
     allow_aggregations: true
     columns:
+    - time
     - createdBy
     - des
     - id
@@ -75,17 +78,18 @@ select_permissions:
 - permission:
     allow_aggregations: true
     columns:
-    - id
-    - name
-    - des
-    - startDate
-    - endDate
-    - logoUrl
-    - status
-    - createdAt
+    - time
     - createdBy
-    - updatedAt
+    - des
+    - id
+    - logoUrl
+    - name
+    - status
     - updatedBy
+    - createdAt
+    - endDate
+    - startDate
+    - updatedAt
     filter:
       status:
         _eq: active
@@ -94,16 +98,18 @@ update_permissions:
 - permission:
     check: {}
     columns:
-    - createdAt
+    - time
     - createdBy
     - des
-    - endDate
+    - id
     - logoUrl
     - name
-    - startDate
     - status
-    - updatedAt
     - updatedBy
+    - createdAt
+    - endDate
+    - startDate
+    - updatedAt
     filter:
       status:
         _eq: active

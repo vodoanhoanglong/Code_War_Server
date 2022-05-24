@@ -63,6 +63,7 @@ CREATE TABLE "public"."contests"
     "des"       text,
     "startDate" timestamptz,
     "endDate"   timestamptz,
+    "time"      integer,
     "logoUrl"   text,
     "status"    text        NOT NULL DEFAULT 'active',
     "createdAt" timestamptz NOT NULL DEFAULT now(),
@@ -70,6 +71,7 @@ CREATE TABLE "public"."contests"
     "updatedAt" timestamptz NOT NULL DEFAULT now(),
     "updatedBy" text,
     PRIMARY KEY ("id"),
+    FOREIGN KEY ("createdBy") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
     UNIQUE ("name")
 );
 
