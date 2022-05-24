@@ -110,6 +110,7 @@ update_permissions:
 - permission:
     check: {}
     columns:
+    - challengeId
     - conceptId
     - contestId
     - createdAt
