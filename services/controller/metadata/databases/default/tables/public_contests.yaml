@@ -1,6 +1,10 @@
 table:
   name: contests
   schema: public
+object_relationships:
+- name: account
+  using:
+    foreign_key_constraint_on: createdBy
 array_relationships:
 - name: contest_results
   using:
