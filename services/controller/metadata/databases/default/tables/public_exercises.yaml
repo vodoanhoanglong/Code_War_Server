@@ -21,6 +21,7 @@ insert_permissions:
     backend_only: false
     check: {}
     columns:
+    - challengeId
     - conceptId
     - contestId
     - createdAt
