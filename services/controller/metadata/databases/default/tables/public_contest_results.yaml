@@ -2,6 +2,9 @@ table:
   name: contest_results
   schema: public
 object_relationships:
+- name: account
+  using:
+    foreign_key_constraint_on: createdBy
 - name: contest
   using:
     foreign_key_constraint_on: contestId
