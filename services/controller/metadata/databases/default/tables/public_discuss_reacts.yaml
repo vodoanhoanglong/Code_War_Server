@@ -4,7 +4,7 @@ table:
 object_relationships:
 - name: account
   using:
-    foreign_key_constraint_on: accountId
+    foreign_key_constraint_on: createdBy
 - name: discuss
   using:
     foreign_key_constraint_on: discussId
@@ -13,7 +13,6 @@ insert_permissions:
     backend_only: false
     check: {}
     columns:
-    - accountId
     - createdBy
     - discussId
     - id
@@ -23,54 +22,57 @@ insert_permissions:
     - updatedBy
     - createdAt
     set:
-      accountId: x-hasura-User-Id
       createdBy: x-hasura-User-Id
   role: moderator
 - permission:
     backend_only: false
     check: {}
     columns:
-    - id
-    - accountId
+    - createdBy
     - discussId
+    - id
     - reactType
     - status
-    - createdAt
-    - createdBy
     - updatedAt
     - updatedBy
+    - createdAt
     set:
-      accountId: x-hasura-User-Id
       createdBy: x-hasura-User-Id
   role: user
 select_permissions:
 - permission:
     allow_aggregations: true
     columns:
-    - id
-    - accountId
+    - createdBy
     - discussId
+    - id
     - reactType
     - status
-    - createdAt
-    - createdBy
     - updatedAt
     - updatedBy
+    - createdAt
     filter:
-      _and:
-      - status:
-          _eq: active
-      - account:
-          status:
-            _eq: active
-      - discuss:
-          status:
-            _eq: active
+      status:
+        _eq: active
+  role: anonymous
+- permission:
+    allow_aggregations: true
+    columns:
+    - createdBy
+    - discussId
+    - id
+    - reactType
+    - status
+    - updatedAt
+    - updatedBy
+    - createdAt
+    filter:
+      status:
+        _eq: active
   role: moderator
 - permission:
     allow_aggregations: true
     columns:
-    - accountId
     - createdBy
     - discussId
     - id
@@ -80,13 +82,43 @@ select_permissions:
     - updatedBy
     - createdAt
     filter:
-      _and:
-      - status:
-          _eq: active
-      - account:
-          status:
-            _eq: active
-      - discuss:
-          status:
-            _eq: active
+      status:
+        _eq: active
+  role: user
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - createdBy
+    - discussId
+    - id
+    - reactType
+    - status
+    - updatedAt
+    - updatedBy
+    - createdAt
+    filter:
+      status:
+        _eq: active
+    set:
+      updatedAt: now()
+      updatedBy: x-hasura-User-Id
+  role: moderator
+- permission:
+    check: null
+    columns:
+    - createdBy
+    - discussId
+    - id
+    - reactType
+    - status
+    - updatedAt
+    - updatedBy
+    - createdAt
+    filter:
+      status:
+        _eq: active
+    set:
+      updatedAt: now()
+      updatedBy: x-hasura-User-Id
   role: user

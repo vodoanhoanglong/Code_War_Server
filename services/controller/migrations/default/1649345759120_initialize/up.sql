@@ -189,15 +189,14 @@ CREATE TABLE "public"."discusses"
     "title"      text,
     "content"    text,
     "status"     text        NOT NULL DEFAULT 'active',
-    "createdAt"  Timestamp   NOT NULL DEFAULT now(),
+    "createdAt"  timestamptz   NOT NULL DEFAULT now(),
     "createdBy"  text,
     "updatedAt"  timestamptz NOT NULL DEFAULT now(),
     "updatedBy"  text,
-    "accountId"  text        NOT NULL,
     "exerciseId" text        NOT NULL,
     "blogId"     text,
     PRIMARY KEY ("id"),
-    FOREIGN KEY ("accountId") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
+    FOREIGN KEY ("createdBy") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
     FOREIGN KEY ("exerciseId") REFERENCES "public"."exercises" ("id") ON UPDATE restrict ON DELETE restrict,
     FOREIGN KEY ("blogId") REFERENCES "public"."blogs" ("id") ON UPDATE restrict ON DELETE restrict
 );
@@ -260,7 +259,6 @@ CREATE TABLE "public"."contest_results"
 CREATE TABLE "public"."discuss_reacts"
 (
     "id"        text        NOT NULL DEFAULT gen_random_uuid(),
-    "accountId" text        NOT NULL,
     "discussId" text        NOT NULL,
     "reactType" text        NOT NULL DEFAULT 'like',
     "status"    text        NOT NULL DEFAULT 'active',
@@ -270,7 +268,6 @@ CREATE TABLE "public"."discuss_reacts"
     "updatedBy" text,
     PRIMARY KEY ("id"),
     FOREIGN KEY ("discussId") REFERENCES "public"."discusses" ("id") ON UPDATE restrict ON DELETE restrict,
-    FOREIGN KEY ("accountId") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
-    UNIQUE ("id"),
-    UNIQUE ("accountId", "discussId")
+    FOREIGN KEY ("createdBy") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
+    UNIQUE ("createdBy", "discussId")
 );

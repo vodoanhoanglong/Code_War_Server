@@ -4,7 +4,7 @@ table:
 object_relationships:
 - name: account
   using:
-    foreign_key_constraint_on: accountId
+    foreign_key_constraint_on: createdBy
 - name: blog
   using:
     foreign_key_constraint_on: blogId
@@ -24,27 +24,24 @@ insert_permissions:
     backend_only: false
     check: {}
     columns:
-    - id
-    - floor
-    - title
-    - content
-    - status
-    - createdAt
-    - createdBy
-    - updatedAt
-    - updatedBy
-    - accountId
-    - exerciseId
     - blogId
+    - content
+    - createdBy
+    - exerciseId
+    - floor
+    - id
+    - status
+    - title
+    - updatedBy
+    - createdAt
+    - updatedAt
     set:
-      accountId: x-hasura-User-Id
       createdBy: x-hasura-User-Id
   role: moderator
 - permission:
     backend_only: false
     check: {}
     columns:
-    - accountId
     - blogId
     - content
     - createdBy
@@ -57,14 +54,12 @@ insert_permissions:
     - createdAt
     - updatedAt
     set:
-      accountId: x-hasura-User-Id
       createdBy: x-hasura-User-Id
   role: user
 select_permissions:
 - permission:
     allow_aggregations: true
     columns:
-    - accountId
     - blogId
     - content
     - createdBy
@@ -77,20 +72,30 @@ select_permissions:
     - createdAt
     - updatedAt
     filter:
-      _and:
-      - status:
-          _eq: active
-      - account:
-          status:
-            _eq: active
-      - exercise:
-          status:
-            _eq: active
+      status:
+        _eq: active
+  role: anonymous
+- permission:
+    allow_aggregations: true
+    columns:
+    - blogId
+    - content
+    - createdBy
+    - exerciseId
+    - floor
+    - id
+    - status
+    - title
+    - updatedBy
+    - createdAt
+    - updatedAt
+    filter:
+      status:
+        _eq: active
   role: moderator
 - permission:
     allow_aggregations: true
     columns:
-    - accountId
     - blogId
     - content
     - createdBy
@@ -103,13 +108,6 @@ select_permissions:
     - createdAt
     - updatedAt
     filter:
-      _and:
-      - status:
-          _eq: active
-      - account:
-          status:
-            _eq: active
-      - exercise:
-          status:
-            _eq: active
+      status:
+        _eq: active
   role: user
