@@ -9,6 +9,13 @@ array_relationships:
       table:
         name: blogs
         schema: public
+- name: exercise_results
+  using:
+    foreign_key_constraint_on:
+      column: accountId
+      table:
+        name: exercise_results
+        schema: public
 select_permissions:
 - permission:
     columns:
