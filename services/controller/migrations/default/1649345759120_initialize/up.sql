@@ -242,7 +242,7 @@ CREATE TABLE "public"."contest_results"
     "questionId"     text,
     "exerciseId"     text,
     "contestId"      text        NOT NULL,
-    "point"          jsonb,
+    "point"          integer,
     "completionTime" integer,
     "status"         text        NOT NULL DEFAULT 'active',
     "createdAt"      timestamptz NOT NULL DEFAULT now(),
