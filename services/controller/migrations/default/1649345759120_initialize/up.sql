@@ -240,7 +240,6 @@ CREATE TABLE "public"."questions"
 CREATE TABLE "public"."contest_results"
 (
     "id"             text        NOT NULL DEFAULT gen_random_uuid(),
-    "accountId"      text        NOT NULL,
     "questionId"     text,
     "exerciseId"     text,
     "contestId"      text        NOT NULL,
@@ -252,7 +251,7 @@ CREATE TABLE "public"."contest_results"
     "updatedAt"      timestamptz NOT NULL DEFAULT now(),
     "updatedBy"      text,
     PRIMARY KEY ("id"),
-    FOREIGN KEY ("accountId") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
+    FOREIGN KEY ("createdBy") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
     FOREIGN KEY ("contestId") REFERENCES "public"."contests" ("id") ON UPDATE restrict ON DELETE restrict,
     FOREIGN KEY ("questionId") REFERENCES "public"."questions" ("id") ON UPDATE restrict ON DELETE restrict,
     FOREIGN KEY ("exerciseId") REFERENCES "public"."exercises" ("id") ON UPDATE restrict ON DELETE restrict
