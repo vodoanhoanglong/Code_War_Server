@@ -1,3 +1,99 @@
 table:
   name: contest_results
   schema: public
+object_relationships:
+- name: contest
+  using:
+    foreign_key_constraint_on: contestId
+insert_permissions:
+- permission:
+    backend_only: false
+    check:
+      contest:
+        _and:
+        - startDate:
+            _lte: now()
+        - endDate:
+            _gte: now()
+    columns:
+    - id
+    - accountId
+    - questionId
+    - exerciseId
+    - contestId
+    - point
+    - completionTime
+    - status
+    - createdAt
+    - createdBy
+    - updatedAt
+    - updatedBy
+    set:
+      createdBy: x-hasura-User-Id
+  role: moderator
+- permission:
+    backend_only: false
+    check:
+      contest:
+        _and:
+        - startDate:
+            _lte: now()
+        - endDate:
+            _gte: now()
+    columns:
+    - point
+    - accountId
+    - contestId
+    - createdBy
+    - exerciseId
+    - id
+    - questionId
+    - status
+    - updatedBy
+    - createdAt
+    - updatedAt
+    - completionTime
+    set:
+      createdBy: x-hasura-User-Id
+  role: user
+select_permissions:
+- permission:
+    allow_aggregations: true
+    columns:
+    - point
+    - accountId
+    - contestId
+    - createdBy
+    - exerciseId
+    - id
+    - questionId
+    - status
+    - updatedBy
+    - createdAt
+    - updatedAt
+    - completionTime
+    filter:
+      contest:
+        status:
+          _eq: active
+  role: moderator
+- permission:
+    allow_aggregations: true
+    columns:
+    - point
+    - accountId
+    - contestId
+    - createdBy
+    - exerciseId
+    - id
+    - questionId
+    - status
+    - updatedBy
+    - createdAt
+    - updatedAt
+    - completionTime
+    filter:
+      contest:
+        status:
+          _eq: active
+  role: user

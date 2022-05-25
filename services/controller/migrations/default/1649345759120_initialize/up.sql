@@ -241,7 +241,9 @@ CREATE TABLE "public"."contest_results"
 (
     "id"             text        NOT NULL DEFAULT gen_random_uuid(),
     "accountId"      text        NOT NULL,
-    "questionId"     text        NOT NULL,
+    "questionId"     text,
+    "exerciseId"     text,
+    "contestId"      text        NOT NULL,
     "point"          float8,
     "completionTime" Time,
     "status"         text        NOT NULL DEFAULT 'active',
@@ -249,12 +251,11 @@ CREATE TABLE "public"."contest_results"
     "createdBy"      text,
     "updatedAt"      timestamptz NOT NULL DEFAULT now(),
     "updatedBy"      text,
-    "contestId"      text        NOT NULL,
     PRIMARY KEY ("id"),
     FOREIGN KEY ("accountId") REFERENCES "public"."account" ("id") ON UPDATE restrict ON DELETE restrict,
     FOREIGN KEY ("contestId") REFERENCES "public"."contests" ("id") ON UPDATE restrict ON DELETE restrict,
     FOREIGN KEY ("questionId") REFERENCES "public"."questions" ("id") ON UPDATE restrict ON DELETE restrict,
-    UNIQUE ("accountId", "contestId")
+    FOREIGN KEY ("exerciseId") REFERENCES "public"."exercises" ("id") ON UPDATE restrict ON DELETE restrict
 );
 
 CREATE TABLE "public"."discuss_reacts"

@@ -251,3 +251,126 @@ Ví dụ
     `1 <= arr2[i].size <= 30`
 -   [Đầu ra] Array of integer', 3, NULL, '[{"time": 500, "input": "[''codelearn'', ''codeit'', ''coding''] [''cod'', ''code'']", "point": 10, "output": "[3, 2]"}]', '["Challenge"]', NULL, NULL, '8fd25ab9-46a7-484e-b0af-a9440f242753', 'active', '2022-05-23 09:21:47.969213+00', 'aa89ede9-26f1-4660-9aba-75b21f53e6c4', '2022-05-23 09:21:47.969213+00', NULL);
 
+
+INSERT INTO public.contests (id, name, des, "startDate", "endDate", "time", "logoUrl", status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('d38bb3a9-9307-4046-a22e-38da89084e3c', 'UTC2 Tech War', 'sadsa', '2022-05-24 05:05:28+00', '2022-05-27 05:05:28+00', 500000, NULL, 'active', '2022-05-24 05:05:42.849752+00', 'b886c67e-f5cf-4246-942f-97d795af3082', '2022-05-24 05:05:42.849752+00', 'b886c67e-f5cf-4246-942f-97d795af3082');
+
+INSERT INTO public.exercises (id, name, des, level, image, metadata, topic, "contestId", "conceptId", "challengeId", status, "createdAt", "createdBy", "updatedAt", "updatedBy") VALUES ('415f9257-987f-4ba3-b226-48d43359225b', 'Class and Object', 'Bạn hãy điền code vào dấu `...` để chương trình hiển thị ra màn hình thông tin sau:
+```
+Name: Long
+Age: 24
+Name: Kien
+Age: 29
+```
+### Lý thuyết
+Constructor (phương thức khởi tạo) trong C++ được chia làm 2 loại là constructor không tham số (như bài trước bạn đã học) và constructor có tham số.
+Một constructor mà có tham số truyền vào được gọi là constructor có tham số, xem ví dụ sau để hiểu rõ hơn:
+```
+#include <iostream>
+using namespace std;
+class Student {
+private:
+    string name;
+public:
+    Student(string name) {
+        cout << "My name is " << name;
+    }
+};
+int main() {
+    Student s("Viet");
+    return 0;
+}
+```
+Kết quả khi chạy chương trình:
+```
+My name is Viet
+```
+Có thể thấy xâu `"Viet"` đã được truyền vào constructor của lớp `Student`.
+Bạn cũng có thể gán giá trị cho các thuộc tính thông qua phương thức khởi tạo giống như chương trình sau:
+```
+#include <iostream>
+using namespace std;
+class Student {
+private:
+    string name;
+    int age;
+public:
+    Student(string n, int a) {
+        name = n;
+        age = a;
+    }
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+int main() {
+    Student s("Codelearn", 2);
+    s.display();
+    return 0;
+}
+```
+Kết quả khi chạy chương trình:
+```
+Name: Codelearn
+Age: 2
+```
+Lưu ý: nếu tên tham số đầu vào trùng với tên thuộc tính của lớp thì bạn có thể truy xuất tới thuộc tính của lớp bằng từ khóa `this` và toán tử `"->"` giống như ví dụ sau:
+```
+#include <iostream>
+using namespace std;
+class Student {
+private:
+    string name;
+    int age;
+public:
+    Student(string name, int age) {
+        this->name = name;
+        this->age = age;
+    }
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+int main() {
+    Student s("Codelearn", 2);
+    s.display();
+    return 0;
+}
+```
+Kết quả khi chạy chương trình:
+```
+Name: Codelearn
+Age: 2
+```
+Đọc tới đây bạn đã biết cách sử dụng consturctor có tham số, hãy quay lại phần bài tập và làm thử.
+Nếu bạn vẫn chưa quen cách sử dụng constructor có tham số thì có thể xem hướng dẫn ở bên dưới.
+### Hướng dẫn
+Code mẫu:
+```
+#include <iostream>
+using namespace std;
+class Student {
+private:
+    string name;
+    int age;
+public:
+    Student(string name, int age) {
+        this->name = name;
+        this->age = age;
+    }
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+int main() {
+    Student s1("Long", 24);
+    Student s2("Kien", 29);
+    s1.display();
+    s2.display();
+    return 0;
+}
+```
+`\
+`', 1, NULL, '[{"time": 1000, "input": null, "point": 10, "output": "Name: Long\\nAge: 24\\nName: Kien\\nAge: 29"}]', '["Naruto", "Sasuke"]', 'd38bb3a9-9307-4046-a22e-38da89084e3c', NULL, NULL, 'active', '2022-05-24 09:30:17.949502+00', 'b886c67e-f5cf-4246-942f-97d795af3082', '2022-05-24 09:30:17.949502+00', NULL);
