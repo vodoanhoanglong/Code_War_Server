@@ -9,6 +9,13 @@ array_relationships:
       table:
         name: blogs
         schema: public
+- name: contest_results
+  using:
+    foreign_key_constraint_on:
+      column: createdBy
+      table:
+        name: contest_results
+        schema: public
 - name: exercise_results
   using:
     foreign_key_constraint_on:
