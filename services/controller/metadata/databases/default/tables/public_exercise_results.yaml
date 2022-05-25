@@ -1,6 +1,10 @@
 table:
   name: exercise_results
   schema: public
+object_relationships:
+- name: exercise
+  using:
+    foreign_key_constraint_on: exerciseId
 insert_permissions:
 - permission:
     backend_only: false
