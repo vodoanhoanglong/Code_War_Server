@@ -244,7 +244,7 @@ CREATE TABLE "public"."contest_results"
     "exerciseId"     text,
     "contestId"      text        NOT NULL,
     "point"          float8,
-    "completionTime" Time,
+    "completionTime" integer,
     "status"         text        NOT NULL DEFAULT 'active',
     "createdAt"      timestamptz NOT NULL DEFAULT now(),
     "createdBy"      text,
